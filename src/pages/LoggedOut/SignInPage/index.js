@@ -5,6 +5,7 @@ const SignInPage = () => {
   return (
     <PageContainer>
       <h1>SignInPage</h1>
+      <p>hi</p>
     </PageContainer>
   );
 };
