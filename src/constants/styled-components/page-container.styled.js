@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import Header from "../../components/Header";
+
 const ContainerLayout = styled.main`
   max-width: 800px;
   margin: 80px auto 0 auto;
@@ -19,5 +21,10 @@ const ContainerLayout = styled.main`
 `;
 
 export const PageContainer = ({ children }) => {
-  return <ContainerLayout>{children}</ContainerLayout>;
+  return (
+    <>
+      <Header />
+      <ContainerLayout>{children}</ContainerLayout>
+    </>
+  );
 };
