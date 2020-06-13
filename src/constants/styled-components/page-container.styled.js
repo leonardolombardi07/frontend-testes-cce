@@ -2,13 +2,16 @@ import React from "react";
 import styled from "styled-components";
 
 import Header from "../../components/Header";
+import MobileMenu from "../../components/MobileMenu";
 
-const ContainerLayout = styled.main`
+const ContainerLayout = styled.div`
   max-width: 800px;
-  margin: 80px auto 0 auto;
+  margin: 80px auto 24px auto;
   padding: 0 16px;
   box-sizing: "border-box";
   font-family: "Lato", sans-serif;
+  background: yellow;
+  min-height: 100%;
 
   h1,
   h2,
@@ -17,6 +20,7 @@ const ContainerLayout = styled.main`
   h5,
   h6 {
     font-family: "Lato", sans-serif;
+    margin-bottom: 0px;
   }
 `;
 
@@ -24,6 +28,7 @@ export const PageContainer = ({ children }) => {
   return (
     <>
       <Header />
+      <MobileMenu />
       <ContainerLayout>{children}</ContainerLayout>
     </>
   );
