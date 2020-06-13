@@ -5,12 +5,12 @@ import Header from "../../components/Header";
 import MobileMenu from "../../components/MobileMenu";
 
 const ContainerLayout = styled.div`
-  max-width: 800px;
+  max-width: 1000px;
   margin: 80px auto 24px auto;
   padding: 0 16px;
   box-sizing: "border-box";
   font-family: "Lato", sans-serif;
-  background: yellow;
+  background: #f3f3f3;
   min-height: 100%;
 
   h1,
