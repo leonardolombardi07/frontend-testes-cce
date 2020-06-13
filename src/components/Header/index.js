@@ -22,7 +22,7 @@ const Header = ({ toggleMobileMenu }) => {
             toggleMobileMenu();
           }}
         >
-          <GrMenu size={30} />
+          <GrMenu size={26} />
         </HeaderMobileMenuIcon>
         <HeaderLogo src={fluxoLogo} />
         <HeaderTitle>Capacitações CCE</HeaderTitle>

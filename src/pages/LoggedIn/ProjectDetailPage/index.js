@@ -1,10 +1,10 @@
 import React from "react";
 import { PageContainer } from "../../../constants/styled-components";
 
-const ProjectDetailPage = () => {
+const ProjectDetailPage = ({ location: { project } }) => {
   return (
     <PageContainer>
-      <h1>ProjectDetailPage</h1>
+      <h1>{project.projectName}</h1>
     </PageContainer>
   );
 };
