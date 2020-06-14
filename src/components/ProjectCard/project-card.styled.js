@@ -1,10 +1,25 @@
+import React from "react";
 import styled from "styled-components";
+import { Link as ReactRouterDomLink } from "react-router-dom";
+
+const Link = ({ isActive, children, ...props }) => {
+  return <ReactRouterDomLink {...props}>{children}</ReactRouterDomLink>;
+};
+
+export const StyledLink = styled(Link)`
+  color: black;
+  text-decoration: none;
+`;
 
 export const ProjectCardContainer = styled.div`
   width: 290px;
   height: 350px;
   border: 1px solid lightgrey;
   margin: 20px auto;
+
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 export const ProjectCardLogo = styled.img`

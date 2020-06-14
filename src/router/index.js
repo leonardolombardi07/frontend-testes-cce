@@ -11,7 +11,7 @@ export default function Router() {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" exact component={HomePage} />
-        <Route exact path="/project-detail" component={ProjectDetailPage} />
+        <Route path="/project-detail" component={ProjectDetailPage} />
         <Route path="/signup" component={SignUpPage} />
         <Route path="/signin" component={SignInPage} />
       </Switch>

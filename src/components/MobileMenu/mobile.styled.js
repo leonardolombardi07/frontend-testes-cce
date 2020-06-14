@@ -42,4 +42,5 @@ export const StyledLink = styled(Link)`
   margin-top: 20px;
   font-weight: ${(p) => (p.isActive ? "bold" : "normal")};
   color: black;
+  text-decoration: none;
 `;

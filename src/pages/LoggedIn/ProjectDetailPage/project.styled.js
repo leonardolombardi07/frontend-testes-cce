@@ -4,6 +4,8 @@ export const ProjectHeaderContainer = styled.div`
   width: 100%;
   min-height: 300px;
   background: orange;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 
   display: flex;
   flex-direction: column;

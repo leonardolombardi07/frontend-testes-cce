@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  StyledLink,
   ProjectCardContainer,
   ProjectCardLogo,
   ProjectPresentationContainer,
@@ -8,15 +9,23 @@ import {
 
 import logoFluxo from "../../assets/images/fluxo-logo.png";
 
-const ProjectCard = () => {
+const ProjectCard = ({ projectData }) => {
   return (
-    <ProjectCardContainer>
-      <ProjectCardLogo src={logoFluxo} />
-      <ProjectPresentationContainer>
-        <h1>Project Title</h1>
-        <UserDescription>User Owner</UserDescription>
-      </ProjectPresentationContainer>
-    </ProjectCardContainer>
+    <StyledLink
+      key={2}
+      to={{
+        pathname: `/project-detail/${projectData?.projectName}`,
+        // project,
+      }}
+    >
+      <ProjectCardContainer>
+        <ProjectCardLogo src={logoFluxo} />
+        <ProjectPresentationContainer>
+          <h1>Project Title</h1>
+          <UserDescription>User Owner</UserDescription>
+        </ProjectPresentationContainer>
+      </ProjectCardContainer>
+    </StyledLink>
   );
 };
 

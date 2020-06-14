@@ -21,7 +21,7 @@ const MobileMenu = ({ toggleMobileMenu }) => {
       <StyledLink
         key={project._id}
         to={{
-          pathname: "/project-detail",
+          pathname: `/project-detail/${project.projectName}`,
           project,
         }}
         onClick={() => toggleMobileMenu()}
@@ -38,8 +38,12 @@ const MobileMenu = ({ toggleMobileMenu }) => {
           <IoIosClose size={40} />
         </CloseMobileMenuIconContainer>
         <MobileMenuItensContainer>
-          <StyledLink to="/">Home</StyledLink>
-          <StyledLink to="/login">Login</StyledLink>
+          <StyledLink to="/" onClick={() => toggleMobileMenu()}>
+            Home
+          </StyledLink>
+          <StyledLink to="/login" onClick={() => toggleMobileMenu()}>
+            Login
+          </StyledLink>
           {renderProjectLinks(fakeData)}
         </MobileMenuItensContainer>
       </MobileMenuContainer>

@@ -2,10 +2,10 @@ import { PROJECTS } from "../actions/types";
 
 const initialState = {
   loading: {
-    projects: false,
+    loadingProjects: false,
   },
   error: {
-    projects: null,
+    projectsError: null,
   },
 };
 
