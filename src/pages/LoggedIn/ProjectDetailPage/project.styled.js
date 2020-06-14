@@ -25,7 +25,7 @@ export const ProjectTitle = styled.h2`
   margin-bottom: 5px;
 `;
 
-export const ProjectDescriptionContainer = styled.div`
+export const ProjectCardContainer = styled.div`
   width: 100%;
   min-height: 150px;
   background: #ffffff;

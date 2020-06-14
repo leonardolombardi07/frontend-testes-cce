@@ -5,7 +5,7 @@ import {
   ProjectHeaderContainer,
   ProjectLogo,
   ProjectTitle,
-  ProjectDescriptionContainer,
+  ProjectCardContainer,
   Subtitle,
   Text,
 } from "./project.styled";
@@ -20,22 +20,22 @@ const ProjectDetailPage = ({ location: { project } }) => {
           {project?.projectName ? project.projectName : "Project Title"}
         </ProjectTitle>
       </ProjectHeaderContainer>
-      <ProjectDescriptionContainer>
+      <ProjectCardContainer>
         <Subtitle>Description</Subtitle>
         <Text>
           {project?.projectDescription
             ? project.projectDescription
             : "There's no Description here"}
         </Text>
-      </ProjectDescriptionContainer>
-      <ProjectDescriptionContainer>
+      </ProjectCardContainer>
+      <ProjectCardContainer>
         <Subtitle>Bugs</Subtitle>
         <Text>
           {project?.projectBugsReport
             ? project.projectBugsReport
             : "No bugs..."}
         </Text>
-      </ProjectDescriptionContainer>
+      </ProjectCardContainer>
     </PageContainer>
   );
 };

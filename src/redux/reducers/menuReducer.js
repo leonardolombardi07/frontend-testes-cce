@@ -1,4 +1,4 @@
-import { TOGGLE_MOBILE_MENU } from "../actions";
+import { TOGGLE_MOBILE_MENU } from "../actions/types";
 
 const initialState = {
   isMobileMenuOpen: false,

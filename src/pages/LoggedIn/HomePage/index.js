@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
+
+import Banner from "../../../components/Banner";
 import { PageContainer } from "../../../constants/styled-components";
+import { ProjectCardsContainer } from "./homepage.styled";
+import ProjectCard from "../../../components/ProjectCard";
+
 import Lottie from "react-lottie";
 import { defaultOptions } from "./lottieOptions";
-
-import { ProjectCardsContainer } from "./homepage.styled";
-import Banner from "../../../components/Banner";
-import ProjectCard from "../../../components/ProjectCard";
 
 import { fetchProjects } from "../../../redux/actions";
 import { connect, useSelector } from "react-redux";

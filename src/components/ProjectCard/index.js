@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   StyledLink,
   ProjectCardContainer,
@@ -6,7 +7,6 @@ import {
   ProjectPresentationContainer,
   UserDescription,
 } from "./project-card.styled";
-
 import logoFluxo from "../../assets/images/fluxo-logo.png";
 
 const ProjectCard = ({ projectData }) => {
