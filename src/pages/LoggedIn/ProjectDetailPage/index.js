@@ -10,16 +10,28 @@ import {
   Text,
 } from "./project.styled";
 import logoFluxo from "../../../assets/images/fluxo-logo.png";
+import EditProjectButton from "../../../components/EditProjectButton";
 
+import { Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const ProjectDetailPage = () => {
   const { selectedProject } = useSelector((state) => state.projects);
 
+  if (!selectedProject) {
+    return <Redirect to="/" />;
+  }
+
   return (
     <PageContainer>
       <ProjectHeaderContainer>
-        <ProjectLogo src={selectedProject?.projectLogoUrl} />
+        <ProjectLogo
+          src={
+            selectedProject.projectLogoUrl
+              ? selectedProject?.projectLogoUrl
+              : logoFluxo
+          }
+        />
         <ProjectTitle>
           {selectedProject?.projectName ? selectedProject.projectName : "..."}
         </ProjectTitle>
@@ -40,6 +52,7 @@ const ProjectDetailPage = () => {
             : "..."}
         </Text>
       </ProjectCardContainer>
+      <EditProjectButton />
     </PageContainer>
   );
 };

@@ -5,6 +5,7 @@ import { PageContainer } from "../../../constants/styled-components";
 import { ProjectCardsContainer } from "./homepage.styled";
 import ProjectCard from "../../../components/ProjectCard";
 import ShowError from "../../../components/ShowError";
+import CreateProjectButton from "../../../components/CreateProjectButton";
 
 import Lottie from "react-lottie";
 import { defaultOptions } from "./lottieOptions";
@@ -39,6 +40,7 @@ const HomePage = ({ fetchProjects }) => {
             <Lottie options={defaultOptions} width={400} height={400} />
           ) : null}
         </ProjectCardsContainer>
+        <CreateProjectButton />
       </PageContainer>
     </>
   );
