@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const base_url = "";
+const base_url = "https://api.github.com";
 
 export const HerokuTestes = axios.create({
   baseURL: base_url,

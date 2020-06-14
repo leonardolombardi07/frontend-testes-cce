@@ -2,7 +2,7 @@ import { PROJECTS } from "../actions/types";
 
 const initialState = {
   loading: {
-    loadingProjects: false,
+    loadingProjects: true,
   },
   error: {
     projectsError: null,
@@ -12,14 +12,15 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case PROJECTS:
+      console.log(action.payload);
       return {
         loading: {
           ...state.loading,
-          projects: action.payload.loading,
+          loadingProjects: action.payload.loading,
         },
         error: {
           ...state.error,
-          projects: action.payload.error,
+          projectsError: false, // change to action.payload.error
         },
       };
     default:

@@ -27,6 +27,10 @@ export default (state = initialState, action) => {
           ...state,
           projects: newProjectsArray,
         };
+      } else {
+        return {
+          ...state,
+        };
       }
     default:
       return state;

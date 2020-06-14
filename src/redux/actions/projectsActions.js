@@ -9,7 +9,7 @@ import { HerokuTestes } from "../../services/apis/HerokuTestes";
 export const fetchProjects = () => async (dispatch) => {
   dispatch({ type: PROJECTS, payload: { loading: true, error: null } });
   try {
-    const { data } = await HerokuTestes.get("/projects");
+    const { data } = await HerokuTestes.get("/users");
     dispatch({ type: FETCH_PROJECTS, payload: data });
     dispatch({ type: PROJECTS, payload: { loading: false, error: null } });
   } catch (error) {
