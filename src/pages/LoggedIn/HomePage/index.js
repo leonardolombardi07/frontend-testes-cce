@@ -4,6 +4,7 @@ import Banner from "../../../components/Banner";
 import { PageContainer } from "../../../constants/styled-components";
 import { ProjectCardsContainer } from "./homepage.styled";
 import ProjectCard from "../../../components/ProjectCard";
+import ShowError from "../../../components/ShowError";
 
 import Lottie from "react-lottie";
 import { defaultOptions } from "./lottieOptions";
@@ -28,16 +29,12 @@ const HomePage = ({ fetchProjects }) => {
     ));
   };
 
-  if (projectsError) {
-    return null;
-  }
-
   return (
     <>
       <Banner />
       <PageContainer>
-        <ProjectCardsContainer>
-          {renderProjectCards()}
+        <ProjectCardsContainer projectsError={projectsError}>
+          {projectsError ? <ShowError /> : renderProjectCards()}
           {loadingProjects ? (
             <Lottie options={defaultOptions} width={400} height={400} />
           ) : null}

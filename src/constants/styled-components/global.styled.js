@@ -4,11 +4,13 @@ export const GlobalStyles = createGlobalStyle`
   body, html {
     margin: 0;
     min-height: 100%;
+    max-width: 100%;
     color: black;
     background: ${(p) => p.theme.primaryBackground};
 
     font-family: 'Lato', sans-serif;
     box-sizing: border-box;
+
   }
 
   ::-webkit-scrollbar {

@@ -8,12 +8,12 @@ export const DesktopMenuContainer = styled.div`
   @media (min-width: 650px) {
     display: ${(p) => (p.isDesktopMenuOpen ? "flex" : "none")};
 
-    position: absolute;
+    position: fixed;
     top: 48px;
     right: 25px;
     background: red;
     min-width: 300px;
-    height: 400px;
+    min-height: 400px;
     background-color: #ffffff;
 
     border: solid 1px lightgrey;

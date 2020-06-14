@@ -12,7 +12,6 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case PROJECTS:
-      console.log(action.payload);
       return {
         loading: {
           ...state.loading,
@@ -20,7 +19,7 @@ export default (state = initialState, action) => {
         },
         error: {
           ...state.error,
-          projectsError: false, // change to action.payload.error
+          projectsError: action.payload.error,
         },
       };
     default:

@@ -12,18 +12,19 @@ import fakeData from "../MobileMenu/fakeData";
 
 const DesktopMenu = ({ toggleDesktopMenu }) => {
   const { isDesktopMenuOpen } = useSelector((state) => state.menu);
+  const { projects } = useSelector((state) => state.projects);
 
-  const renderProjectLinks = (projects) => {
-    return projects.map((project) => (
+  const renderProjectLinks = () => {
+    return projects?.map((project) => (
       <StyledLink
-        key={project._id}
+        key={project?._id}
         to={{
-          pathname: `/project-detail/${project.projectName}`,
+          pathname: `/project-detail/${project?.projectName}`,
           project,
         }}
         onClick={() => toggleDesktopMenu()}
       >
-        {project.projectName}
+        {project?.projectName}
       </StyledLink>
     ));
   };
@@ -35,7 +36,7 @@ const DesktopMenu = ({ toggleDesktopMenu }) => {
           Home
         </StyledLink>
         <StyledLink to="/login">Login</StyledLink>
-        {renderProjectLinks(fakeData)}
+        {renderProjectLinks()}
       </DesktopMenuItensContainer>
     </DesktopMenuContainer>
   );

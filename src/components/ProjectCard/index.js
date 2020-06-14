@@ -12,16 +12,16 @@ import logoFluxo from "../../assets/images/fluxo-logo.png";
 const ProjectCard = ({ projectData }) => {
   return (
     <StyledLink
-      key={2}
+      key={projectData?.id}
       to={{
         pathname: `/project-detail/${projectData?.projectName}`,
-        // project,
+        project: projectData,
       }}
     >
       <ProjectCardContainer>
-        <ProjectCardLogo src={logoFluxo} />
+        <ProjectCardLogo src={projectData?.projectLogoUrl} />
         <ProjectPresentationContainer>
-          <h1>Project Title</h1>
+          <h1>{projectData?.projectName}</h1>
           <UserDescription>User Owner</UserDescription>
         </ProjectPresentationContainer>
       </ProjectCardContainer>

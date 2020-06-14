@@ -15,7 +15,7 @@ const ProjectDetailPage = ({ location: { project } }) => {
   return (
     <PageContainer>
       <ProjectHeaderContainer>
-        <ProjectLogo src={logoFluxo} />
+        <ProjectLogo src={project?.projectLogoUrl} />
         <ProjectTitle>
           {project?.projectName ? project.projectName : "Project Title"}
         </ProjectTitle>

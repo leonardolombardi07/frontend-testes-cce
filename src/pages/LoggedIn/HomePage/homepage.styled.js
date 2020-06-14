@@ -9,7 +9,7 @@ export const ProjectCardsContainer = styled.div`
   align-items: center;
 
   @media (min-width: 650px) {
-    display: grid;
+    display: ${(p) => (p.projectsError ? "flex" : "grid")};
     margin: auto;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1rem;

@@ -15,13 +15,14 @@ import fakeData from "./fakeData";
 
 const MobileMenu = ({ toggleMobileMenu }) => {
   const { isMobileMenuOpen } = useSelector((state) => state.menu);
+  const { projects } = useSelector((state) => state.projects);
 
-  const renderProjectLinks = (projects) => {
+  const renderProjectLinks = () => {
     return projects.map((project) => (
       <StyledLink
-        key={project._id}
+        key={project?._id}
         to={{
-          pathname: `/project-detail/${project.projectName}`,
+          pathname: `/project-detail/${project?.projectName}`,
           project,
         }}
         onClick={() => toggleMobileMenu()}
@@ -44,7 +45,7 @@ const MobileMenu = ({ toggleMobileMenu }) => {
           <StyledLink to="/login" onClick={() => toggleMobileMenu()}>
             Login
           </StyledLink>
-          {renderProjectLinks(fakeData)}
+          {renderProjectLinks()}
         </MobileMenuItensContainer>
       </MobileMenuContainer>
     </>

@@ -25,6 +25,9 @@ export const HeaderMobileMenuIcon = styled.div`
   display: flex;
   align-items: center;
   margin: 8px 10px 0px 0px;
+  :hover {
+    cursor: pointer;
+  }
 
   @media (min-width: 650px) {
     display: none;
@@ -60,5 +63,8 @@ export const HeaderDesktopMenuIcon = styled.div`
     display: flex;
     align-items: center;
     margin: 0 20px;
+    :hover {
+      cursor: pointer;
+    }
   }
 `;
