@@ -3,6 +3,7 @@ import {
   FETCH_PROJECTS,
   CREATE_PROJECT,
   EDIT_PROJECT,
+  SAVE_SELECTED_PROJECT,
 } from "./types";
 import { HerokuTestes } from "../../services/apis/HerokuTestes";
 
@@ -51,4 +52,8 @@ export const editProject = ({ projectId }) => async (dispatch) => {
       payload: { loading: false, error: error.message },
     });
   }
+};
+
+export const saveSelectedProject = ({ projectData }) => (dispatch) => {
+  dispatch({ type: SAVE_SELECTED_PROJECT, payload: projectData });
 };

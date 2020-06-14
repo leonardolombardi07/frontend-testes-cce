@@ -6,11 +6,11 @@ import {
 } from "./desktop.styled";
 
 import { useSelector, connect } from "react-redux";
-import { toggleDesktopMenu } from "../../redux/actions";
+import { toggleDesktopMenu, saveSelectedProject } from "../../redux/actions";
 
 import fakeData from "../MobileMenu/fakeData";
 
-const DesktopMenu = ({ toggleDesktopMenu }) => {
+const DesktopMenu = ({ toggleDesktopMenu, saveSelectedProject }) => {
   const { isDesktopMenuOpen } = useSelector((state) => state.menu);
   const { projects } = useSelector((state) => state.projects);
 
@@ -20,9 +20,11 @@ const DesktopMenu = ({ toggleDesktopMenu }) => {
         key={project?._id}
         to={{
           pathname: `/project-detail/${project?.projectName}`,
-          project,
         }}
-        onClick={() => toggleDesktopMenu()}
+        onClick={() => {
+          toggleDesktopMenu();
+          saveSelectedProject({ projectData: project });
+        }}
       >
         {project?.projectName}
       </StyledLink>
@@ -35,7 +37,9 @@ const DesktopMenu = ({ toggleDesktopMenu }) => {
         <StyledLink to="/" onClick={() => toggleDesktopMenu()}>
           Home
         </StyledLink>
-        <StyledLink to="/login">Login</StyledLink>
+        <StyledLink to="/login" onClick={() => toggleDesktopMenu()}>
+          Login
+        </StyledLink>
 
         {renderProjectLinks()}
       </DesktopMenuItensContainer>
@@ -43,4 +47,6 @@ const DesktopMenu = ({ toggleDesktopMenu }) => {
   );
 };
 
-export default connect(null, { toggleDesktopMenu })(DesktopMenu);
+export default connect(null, { toggleDesktopMenu, saveSelectedProject })(
+  DesktopMenu
+);

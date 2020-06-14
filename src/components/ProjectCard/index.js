@@ -9,13 +9,18 @@ import {
 } from "./project-card.styled";
 import logoFluxo from "../../assets/images/fluxo-logo.png";
 
-const ProjectCard = ({ projectData }) => {
+import { connect } from "react-redux";
+import { saveSelectedProject } from "../../redux/actions";
+
+const ProjectCard = ({ projectData, saveSelectedProject }) => {
   return (
     <StyledLink
       key={projectData?.id}
       to={{
         pathname: `/project-detail/${projectData?.projectName}`,
-        project: projectData,
+      }}
+      onClick={() => {
+        saveSelectedProject({ projectData });
       }}
     >
       <ProjectCardContainer>
@@ -29,4 +34,4 @@ const ProjectCard = ({ projectData }) => {
   );
 };
 
-export default ProjectCard;
+export default connect(null, { saveSelectedProject })(ProjectCard);

@@ -1,7 +1,13 @@
-import { FETCH_PROJECTS, CREATE_PROJECT, EDIT_PROJECT } from "../actions/types";
+import {
+  FETCH_PROJECTS,
+  CREATE_PROJECT,
+  EDIT_PROJECT,
+  SAVE_SELECTED_PROJECT,
+} from "../actions/types";
 
 const initialState = {
   projects: [],
+  selectedProject: null,
 };
 
 export default (state = initialState, action) => {
@@ -32,6 +38,11 @@ export default (state = initialState, action) => {
           ...state,
         };
       }
+    case SAVE_SELECTED_PROJECT:
+      return {
+        ...state,
+        selectedProject: action.payload,
+      };
     default:
       return state;
   }

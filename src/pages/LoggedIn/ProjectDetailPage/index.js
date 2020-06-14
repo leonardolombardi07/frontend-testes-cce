@@ -11,29 +11,33 @@ import {
 } from "./project.styled";
 import logoFluxo from "../../../assets/images/fluxo-logo.png";
 
-const ProjectDetailPage = ({ location: { project } }) => {
+import { useSelector } from "react-redux";
+
+const ProjectDetailPage = () => {
+  const { selectedProject } = useSelector((state) => state.projects);
+
   return (
     <PageContainer>
       <ProjectHeaderContainer>
-        <ProjectLogo src={project?.projectLogoUrl} />
+        <ProjectLogo src={selectedProject?.projectLogoUrl} />
         <ProjectTitle>
-          {project?.projectName ? project.projectName : "Project Title"}
+          {selectedProject?.projectName ? selectedProject.projectName : "..."}
         </ProjectTitle>
       </ProjectHeaderContainer>
       <ProjectCardContainer>
         <Subtitle>Description</Subtitle>
         <Text>
-          {project?.projectDescription
-            ? project.projectDescription
-            : "There's no Description here"}
+          {selectedProject?.projectDescription
+            ? selectedProject.projectDescription
+            : "..."}
         </Text>
       </ProjectCardContainer>
       <ProjectCardContainer>
         <Subtitle>Bugs</Subtitle>
         <Text>
-          {project?.projectBugsReport
-            ? project.projectBugsReport
-            : "No bugs..."}
+          {selectedProject?.projectBugsReport
+            ? selectedProject.projectBugsReport
+            : "..."}
         </Text>
       </ProjectCardContainer>
     </PageContainer>
