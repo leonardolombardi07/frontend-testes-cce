@@ -36,6 +36,7 @@ const DesktopMenu = ({ toggleDesktopMenu }) => {
           Home
         </StyledLink>
         <StyledLink to="/login">Login</StyledLink>
+
         {renderProjectLinks()}
       </DesktopMenuItensContainer>
     </DesktopMenuContainer>

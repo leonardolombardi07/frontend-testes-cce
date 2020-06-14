@@ -14,7 +14,10 @@ export const DesktopMenuContainer = styled.div`
     background: red;
     min-width: 300px;
     min-height: 400px;
+    max-height: 400px;
     background-color: #ffffff;
+    overflow-y: scroll;
+    word-wrap: break-word;
 
     border: solid 1px lightgrey;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
