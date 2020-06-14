@@ -3,6 +3,7 @@ export const PROJECTS = "PROJECTS";
 
 // Menu Action Types
 export const TOGGLE_MOBILE_MENU = "TOGGLE_MOBILE_MENU";
+export const TOGGLE_DESKTOP_MENU = "TOGGLE_DESKTOP_MENU";
 
 // Theme Action Types
 export const TOGGLE_THEME = "TOGGLE_THEME";

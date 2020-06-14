@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import Header from "../../components/Header";
 import MobileMenu from "../../components/MobileMenu";
+import DesktopMenu from "../../components/DesktopMenu";
 
 const ContainerLayout = styled.div`
   max-width: 1000px;
@@ -27,6 +28,7 @@ export const PageContainer = ({ children }) => {
   return (
     <>
       <Header />
+      <DesktopMenu />
       <MobileMenu />
       <ContainerLayout>{children}</ContainerLayout>
     </>

@@ -8,9 +8,8 @@ import {
 } from "./mobile.styled";
 import { IoIosClose } from "react-icons/io";
 
-import { useSelector } from "react-redux";
+import { useSelector, connect } from "react-redux";
 import { toggleMobileMenu } from "../../redux/actions";
-import { connect } from "react-redux";
 
 import fakeData from "./fakeData";
 

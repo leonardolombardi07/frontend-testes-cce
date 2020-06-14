@@ -1,5 +1,6 @@
 import React from "react";
 import Switch from "react-switch";
+import { StyledLabel } from "./switcher.styled";
 
 import { toggleTheme } from "../../redux/actions";
 import { useSelector, connect } from "react-redux";
@@ -8,7 +9,7 @@ const Switcher = ({ toggleTheme }) => {
   const themeState = useSelector((state) => state.theme);
 
   return (
-    <label>
+    <StyledLabel>
       <Switch
         onChange={() => {
           toggleTheme();
@@ -19,7 +20,7 @@ const Switcher = ({ toggleTheme }) => {
         checkedIcon={false}
         uncheckedIcon={false}
       />
-    </label>
+    </StyledLabel>
   );
 };
 

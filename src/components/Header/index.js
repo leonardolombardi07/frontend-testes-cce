@@ -6,16 +6,18 @@ import {
   HeaderMobileMenuIcon,
   HeaderLogo,
   HeaderTitle,
+  HeaderDesktopMenuIcon,
 } from "./header.styled";
 import { GrMenu } from "react-icons/gr";
+import { GrDown } from "react-icons/gr";
 import fluxoLogo from "../../assets/images/fluxo-logo.png";
 
 import Switcher from "../Switcher";
 
-import { toggleMobileMenu } from "../../redux/actions";
+import { toggleMobileMenu, toggleDesktopMenu } from "../../redux/actions";
 import { connect } from "react-redux";
 
-const Header = ({ toggleMobileMenu }) => {
+const Header = ({ toggleMobileMenu, toggleDesktopMenu }) => {
   return (
     <HeaderContainer>
       <HeaderDiv>
@@ -30,11 +32,17 @@ const Header = ({ toggleMobileMenu }) => {
         <HeaderTitle>Capacitações CCE</HeaderTitle>
       </HeaderDiv>
       <HeaderDiv>
-        <p>Desktop Menu</p>
         <Switcher />
+        <HeaderDesktopMenuIcon
+          onClick={() => {
+            toggleDesktopMenu();
+          }}
+        >
+          <GrDown size={26} />
+        </HeaderDesktopMenuIcon>
       </HeaderDiv>
     </HeaderContainer>
   );
 };
 
-export default connect(null, { toggleMobileMenu })(Header);
+export default connect(null, { toggleMobileMenu, toggleDesktopMenu })(Header);

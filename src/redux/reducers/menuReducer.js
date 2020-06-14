@@ -1,4 +1,4 @@
-import { TOGGLE_MOBILE_MENU } from "../actions/types";
+import { TOGGLE_MOBILE_MENU, TOGGLE_DESKTOP_MENU } from "../actions/types";
 
 const initialState = {
   isMobileMenuOpen: false,
@@ -11,6 +11,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isMobileMenuOpen: !state.isMobileMenuOpen,
+      };
+    case TOGGLE_DESKTOP_MENU:
+      return {
+        ...state,
+        isDesktopMenuOpen: !state.isDesktopMenuOpen,
       };
     default:
       return state;

@@ -52,3 +52,13 @@ export const HeaderMenu = styled.nav`
   height: 100%;
   background: blue;
 `;
+
+export const HeaderDesktopMenuIcon = styled.div`
+  display: none;
+
+  @media (min-width: 650px) {
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+  }
+`;
