@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ProjectCardsContainer = styled.div`
   width: 100%;
-  background: #ffffff;
+  background: ${(p) => p.theme.secondaryBackground};
   border: 1px solid lightgrey;
   display: flex;
   flex-direction: column;

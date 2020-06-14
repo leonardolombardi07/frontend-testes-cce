@@ -28,7 +28,7 @@ export const ProjectTitle = styled.h2`
 export const ProjectCardContainer = styled.div`
   width: 100%;
   min-height: 150px;
-  background: #ffffff;
+  background: ${(p) => p.theme.secondaryBackground};
   word-wrap: break-word;
   padding: 20px 0px;
   margin: 20px 0px;

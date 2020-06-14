@@ -10,6 +10,8 @@ import {
 import { GrMenu } from "react-icons/gr";
 import fluxoLogo from "../../assets/images/fluxo-logo.png";
 
+import Switcher from "../Switcher";
+
 import { toggleMobileMenu } from "../../redux/actions";
 import { connect } from "react-redux";
 
@@ -27,7 +29,10 @@ const Header = ({ toggleMobileMenu }) => {
         <HeaderLogo src={fluxoLogo} />
         <HeaderTitle>Capacitações CCE</HeaderTitle>
       </HeaderDiv>
-      <HeaderDiv>Desktop Menu</HeaderDiv>
+      <HeaderDiv>
+        <p>Desktop Menu</p>
+        <Switcher />
+      </HeaderDiv>
     </HeaderContainer>
   );
 };

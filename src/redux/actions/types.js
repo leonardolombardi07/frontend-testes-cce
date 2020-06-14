@@ -4,6 +4,9 @@ export const PROJECTS = "PROJECTS";
 // Menu Action Types
 export const TOGGLE_MOBILE_MENU = "TOGGLE_MOBILE_MENU";
 
+// Theme Action Types
+export const TOGGLE_THEME = "TOGGLE_THEME";
+
 // Projects Action Types
 export const FETCH_PROJECTS = "FETCH_PROJECTS";
 export const CREATE_PROJECT = "CREATE_PROJECT";

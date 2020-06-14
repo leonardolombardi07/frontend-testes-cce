@@ -5,7 +5,7 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     min-height: 100%;
     color: black;
-    background: #F3F3F3;
+    background: ${(p) => p.theme.primaryBackground};
 
     font-family: 'Lato', sans-serif;
     box-sizing: border-box;
@@ -19,7 +19,7 @@ export const GlobalStyles = createGlobalStyle`
     border-radius: 10px;
   }
   ::-webkit-scrollbar-thumb {
-    background: lightgrey;
+    background: ${(p) => p.theme.scrollViewThumbColor};
     border-radius: 10px;
   }
 `;

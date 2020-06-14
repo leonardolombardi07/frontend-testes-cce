@@ -7,7 +7,7 @@ const Link = ({ isActive, children, ...props }) => {
 };
 
 export const StyledLink = styled(Link)`
-  color: black;
+  color: ${(p) => p.theme.primaryTextColor};
   text-decoration: none;
 `;
 

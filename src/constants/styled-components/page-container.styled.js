@@ -10,7 +10,6 @@ const ContainerLayout = styled.div`
   padding: 0 16px;
   box-sizing: "border-box";
   font-family: "Lato", sans-serif;
-  background: #f3f3f3;
   min-height: 100%;
 
   h1,

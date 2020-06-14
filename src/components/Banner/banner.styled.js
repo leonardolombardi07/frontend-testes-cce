@@ -5,7 +5,7 @@ export const BannerContainer = styled.div`
   background-size: cover;
   background-position: center center;
   background-image: url(${(p) => p.backgroundImage});
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: ${(p) => p.theme.bannerBackground};
   transform: translate3d(0px, 50px, 0px);
   opacity: 0.85;
   display: flex;
