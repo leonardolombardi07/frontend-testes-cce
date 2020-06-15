@@ -40,17 +40,20 @@ const EditProjectPage = ({ editProject }) => {
     const handleFormType = (type) => {
       if (type === "file") {
         const imageFile = event.target.files[0];
-        setImageDisplay(() => URL.createObjectURL(imageFile));
+        try {
+          const display = URL.createObjectURL(imageFile);
+          setImageDisplay(display);
+        } catch (error) {}
         return imageFile;
       }
       return event.target.value;
     };
+
     setFormFields((previousState) => ({
       ...previousState,
       [event.target.name]: handleFormType(event.target.type),
     }));
   };
-
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     editProject({ projectData: formFields });

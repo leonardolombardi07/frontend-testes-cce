@@ -17,8 +17,13 @@ export const ProjectHeaderContainer = styled.div`
 `;
 
 export const ProjectLogoPlaceholder = styled.div`
+  /* height: 200px;
+  width: 200px; */
+  width: 350px;
+  max-width: 80%;
   height: 200px;
-  width: 200px;
+  max-height: 80%;
+
   border-radius: 10px;
   border: 1px solid lightgrey;
   background-image: url(${(p) => p.backgroundImage});

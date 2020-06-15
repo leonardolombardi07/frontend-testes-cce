@@ -16,8 +16,10 @@ export const ProjectHeaderContainer = styled.div`
 `;
 
 export const ProjectLogo = styled.img`
-  max-height: 200px;
-  max-width: 350px;
+  width: 350px;
+  max-width: 80%;
+  height: 200px;
+  max-height: 80%;
   border-radius: 10px;
 `;
 

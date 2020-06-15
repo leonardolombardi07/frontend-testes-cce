@@ -38,7 +38,12 @@ const CreateProjectPage = ({ createProject }) => {
     const handleFormType = (type) => {
       if (type === "file") {
         const imageFile = event.target.files[0];
-        setImageDisplay(() => URL.createObjectURL(imageFile));
+        try {
+          const display = URL.createObjectURL(imageFile);
+          setImageDisplay(display);
+        } catch (error) {
+          alert("Não foi possível salvar essa imagem!");
+        }
         return imageFile;
       }
       return event.target.value;
