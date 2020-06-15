@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.js": "/frontend-testes-cce/static/js/main.78c32d6a.chunk.js",
+    "main.js.map": "/frontend-testes-cce/static/js/main.78c32d6a.chunk.js.map",
+    "runtime-main.js": "/frontend-testes-cce/static/js/runtime-main.b1e5f84c.js",
+    "runtime-main.js.map": "/frontend-testes-cce/static/js/runtime-main.b1e5f84c.js.map",
+    "static/js/2.cb7be87a.chunk.js": "/frontend-testes-cce/static/js/2.cb7be87a.chunk.js",
+    "static/js/2.cb7be87a.chunk.js.map": "/frontend-testes-cce/static/js/2.cb7be87a.chunk.js.map",
+    "index.html": "/frontend-testes-cce/index.html",
+    "precache-manifest.24325decce2ae472fbe55df811748ed5.js": "/frontend-testes-cce/precache-manifest.24325decce2ae472fbe55df811748ed5.js",
+    "service-worker.js": "/frontend-testes-cce/service-worker.js",
+    "static/js/2.cb7be87a.chunk.js.LICENSE.txt": "/frontend-testes-cce/static/js/2.cb7be87a.chunk.js.LICENSE.txt",
+    "static/media/add-image-transparent.png": "/frontend-testes-cce/static/media/add-image-transparent.1f1e1a29.png",
+    "static/media/cce-banner-transparent.png": "/frontend-testes-cce/static/media/cce-banner-transparent.ff26b527.png",
+    "static/media/sad-skull.png": "/frontend-testes-cce/static/media/sad-skull.6fe521f5.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b1e5f84c.js",
+    "static/js/2.cb7be87a.chunk.js",
+    "static/js/main.78c32d6a.chunk.js"
+  ]
+}
