@@ -32,12 +32,22 @@ const EditProjectPage = ({ editProject }) => {
     projectBugsReport: selectedProject.projectBugsReport,
     _id: selectedProject._id,
   });
+  const [imageDisplay, setImageDisplay] = useState(null);
 
   const handleFormChange = (event) => {
     event.persist();
+
+    const handleFormType = (type) => {
+      if (type === "file") {
+        const imageFile = event.target.files[0];
+        setImageDisplay(() => URL.createObjectURL(imageFile));
+        return imageFile;
+      }
+      return event.target.value;
+    };
     setFormFields((previousState) => ({
       ...previousState,
-      [event.target.name]: event.target.value,
+      [event.target.name]: handleFormType(event.target.type),
     }));
   };
 
@@ -46,18 +56,27 @@ const EditProjectPage = ({ editProject }) => {
     editProject({ projectData: formFields });
   };
 
+  const handleImageDisplay = () => {
+    if (imageDisplay) {
+      return imageDisplay;
+    } else if (selectedProject?.projectLogoUrl) {
+      return selectedProject.projectLogoUrl;
+    } else {
+      return addImage;
+    }
+  };
+
+  console.log(imageDisplay);
   return (
     <PageContainer>
       <form>
         <ProjectHeaderContainer>
-          <ProjectLogoPlaceholder
-            backgroundImage={
-              selectedProject.projectLogoUrl
-                ? selectedProject.projectLogoUrl
-                : addImage
-            }
-          >
-            <ProjectLogoInput type="file" onChange={handleFormChange} />
+          <ProjectLogoPlaceholder backgroundImage={handleImageDisplay()}>
+            <ProjectLogoInput
+              type="file"
+              name="projectLogo"
+              onChange={handleFormChange}
+            />
           </ProjectLogoPlaceholder>
 
           <ProjectNameInput
