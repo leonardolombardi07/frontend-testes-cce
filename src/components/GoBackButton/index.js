@@ -12,9 +12,7 @@ const GoBackButton = () => {
         history.goBack();
       }}
     >
-      <GoBackButtonContainer>
-        <MdNavigateBefore size={35} />
-      </GoBackButtonContainer>
+      <MdNavigateBefore size={35} />
     </StyledButton>
   );
 };

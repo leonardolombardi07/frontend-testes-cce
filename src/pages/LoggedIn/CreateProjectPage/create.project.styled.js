@@ -81,6 +81,7 @@ export const TextAreaInput = styled.textarea`
   padding: 15px 10px;
   border: 1px solid lightgrey;
   background: #ffffff;
+  outline: 0;
 
   font-size: 18px;
   color: #002;

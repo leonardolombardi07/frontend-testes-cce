@@ -30,15 +30,24 @@ const HomePage = ({ fetchProjects }) => {
     ));
   };
 
+  const renderContent = () => {
+    if (loadingFetchProjects) {
+      return <Lottie options={defaultOptions} width={400} height={400} />;
+    } else if (fetchProjectsError) {
+      return <ShowError />;
+    }
+    return renderProjectCards();
+  };
+
   return (
     <>
       <Banner />
       <PageContainer>
-        <ProjectCardsContainer fetchProjectsError={fetchProjectsError}>
-          {fetchProjectsError ? <ShowError /> : renderProjectCards()}
-          {loadingFetchProjects ? (
-            <Lottie options={defaultOptions} width={400} height={400} />
-          ) : null}
+        <ProjectCardsContainer
+          fetchProjectsError={fetchProjectsError}
+          loadingFetchProjects={loadingFetchProjects}
+        >
+          {renderContent()}
         </ProjectCardsContainer>
         <CreateProjectButton />
       </PageContainer>

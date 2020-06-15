@@ -9,7 +9,8 @@ export const ProjectCardsContainer = styled.div`
   align-items: center;
 
   @media (min-width: 650px) {
-    display: ${(p) => (p.fetchProjectsError ? "flex" : "grid")};
+    display: ${(p) =>
+      p.fetchProjectsError || p.loadingFetchProjects ? "flex" : "grid"};
     margin: auto;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1rem;

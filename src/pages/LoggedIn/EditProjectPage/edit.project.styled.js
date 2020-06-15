@@ -18,7 +18,7 @@ export const ProjectHeaderContainer = styled.div`
 
 export const ProjectLogoPlaceholder = styled.div`
   height: 200px;
-  width: 200px;
+  min-width: 200px;
   border-radius: 10px;
   border: 1px solid lightgrey;
   background-image: url(${(p) => p.backgroundImage});
@@ -45,6 +45,7 @@ export const ProjectNameInput = styled.input`
   margin: 20px 0px;
   padding: 15px 25px;
   background: #ffffff;
+  outline: 0;
 
   font-size: 20px;
   font-weight: bold;
@@ -74,13 +75,18 @@ export const Subtitle = styled.h3`
   margin-top: 30px;
 `;
 
-export const TextAreaInput = styled.textarea`
+export const TextAreaInput = styled.textarea.attrs((p) => ({
+  spellcheck: false,
+  autoCorrect: false,
+}))`
   width: calc(100% - 50px);
-  height: 100px;
+  min-height: 100px;
   margin: 10px 20px;
   padding: 15px 10px;
   border: 1px solid lightgrey;
   background: #ffffff;
+  resize: vertical;
+  outline: 0;
 
   font-size: 18px;
   color: #002;
