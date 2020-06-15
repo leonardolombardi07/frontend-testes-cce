@@ -13,6 +13,7 @@ import {
   ErrorMessage,
 } from "./edit.project.styled";
 import addImage from "../../../assets/images/add-image-transparent.png";
+import GoBackButton from "../../../components/GoBackButton";
 
 import { editProject } from "../../../redux/actions";
 import { useSelector, connect } from "react-redux";
@@ -92,6 +93,7 @@ const EditProjectPage = ({ editProject }) => {
           <ErrorMessage>{editProjectError}</ErrorMessage>
         ) : null}
       </form>
+      <GoBackButton />
     </PageContainer>
   );
 };

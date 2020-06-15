@@ -13,6 +13,7 @@ import {
   ErrorMessage,
 } from "./create.project.styled";
 import addImage from "../../../assets/images/add-image-transparent.png";
+import GoBackButton from "../../../components/GoBackButton";
 
 import { createProject } from "../../../redux/actions";
 import { useSelector, connect } from "react-redux";
@@ -84,6 +85,7 @@ const CreateProjectPage = ({ createProject }) => {
           <ErrorMessage>{createProjectError}</ErrorMessage>
         ) : null}
       </form>
+      <GoBackButton />
     </PageContainer>
   );
 };

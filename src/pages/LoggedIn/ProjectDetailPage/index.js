@@ -11,6 +11,7 @@ import {
 } from "./project.styled";
 import logoFluxo from "../../../assets/images/fluxo-logo.png";
 import EditProjectButton from "../../../components/EditProjectButton";
+import GoBackButton from "../../../components/GoBackButton";
 
 import { Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -52,6 +53,7 @@ const ProjectDetailPage = () => {
             : "..."}
         </Text>
       </ProjectCardContainer>
+      <GoBackButton />
       <EditProjectButton />
     </PageContainer>
   );
