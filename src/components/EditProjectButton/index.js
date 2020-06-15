@@ -5,7 +5,7 @@ import { MdCreate } from "react-icons/md";
 
 const EditProjectButton = () => {
   return (
-    <StyledLink>
+    <StyledLink to="/edit-project">
       <EditButtonContainer>
         <MdCreate size={35} />
       </EditButtonContainer>

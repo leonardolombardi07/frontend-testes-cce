@@ -16,9 +16,11 @@ import { connect, useSelector } from "react-redux";
 const HomePage = ({ fetchProjects }) => {
   const { projects } = useSelector((state) => state.projects);
   const {
-    loading: { loadingProjects },
-    error: { projectsError },
+    loading: { loadingFetchProjects },
+    error: { fetchProjectsError },
   } = useSelector((state) => state.requests);
+
+  console.log(fetchProjectsError);
 
   useEffect(() => {
     fetchProjects();
@@ -34,9 +36,9 @@ const HomePage = ({ fetchProjects }) => {
     <>
       <Banner />
       <PageContainer>
-        <ProjectCardsContainer projectsError={projectsError}>
-          {projectsError ? <ShowError /> : renderProjectCards()}
-          {loadingProjects ? (
+        <ProjectCardsContainer fetchProjectsError={fetchProjectsError}>
+          {fetchProjectsError ? <ShowError /> : renderProjectCards()}
+          {loadingFetchProjects ? (
             <Lottie options={defaultOptions} width={400} height={400} />
           ) : null}
         </ProjectCardsContainer>

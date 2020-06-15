@@ -1,5 +1,7 @@
 // Requests Reducer
-export const PROJECTS = "PROJECTS";
+export const FETCH_PROJECTS_REQUEST = "FETCH_PROJECTS_REQUEST";
+export const CREATE_PROJECT_REQUEST = "CREATE_PROJECT_REQUEST";
+export const EDIT_PROJECT_REQUEST = "EDIT_PROJECT_REQUEST";
 
 // Menu Action Types
 export const TOGGLE_MOBILE_MENU = "TOGGLE_MOBILE_MENU";

@@ -11,23 +11,25 @@ import {
   TextAreaInput,
   FormButton,
   ErrorMessage,
-} from "./create.project.styled";
+} from "./edit.project.styled";
 import addImage from "../../../assets/images/add-image-transparent.png";
 
-import { createProject } from "../../../redux/actions";
+import { editProject } from "../../../redux/actions";
 import { useSelector, connect } from "react-redux";
 
-const CreateProjectPage = ({ createProject }) => {
+const EditProjectPage = ({ editProject }) => {
+  const { selectedProject } = useSelector((state) => state.projects);
   const {
-    loading: { loadingCreateProject },
-    error: { createProjectError },
+    loading: { loadingEditProject },
+    error: { editProjectError },
   } = useSelector((state) => state.requests);
 
   const [formFields, setFormFields] = useState({
     projectLogo: null,
-    projectName: "",
-    projectDescription: "",
-    projectBugsReport: "",
+    projectName: selectedProject.projectName,
+    projectDescription: selectedProject.projectDescription,
+    projectBugsReport: selectedProject.projectBugsReport,
+    _id: selectedProject._id,
   });
 
   const handleFormChange = (event) => {
@@ -40,14 +42,20 @@ const CreateProjectPage = ({ createProject }) => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    createProject({ projectData: formFields });
+    editProject({ projectData: formFields });
   };
 
   return (
     <PageContainer>
       <form>
         <ProjectHeaderContainer>
-          <ProjectLogoPlaceholder backgroundImage={addImage}>
+          <ProjectLogoPlaceholder
+            backgroundImage={
+              selectedProject.projectLogoUrl
+                ? selectedProject.projectLogoUrl
+                : addImage
+            }
+          >
             <ProjectLogoInput type="file" onChange={handleFormChange} />
           </ProjectLogoPlaceholder>
 
@@ -77,15 +85,15 @@ const CreateProjectPage = ({ createProject }) => {
         </ProjectCardContainer>
 
         <FormButton onClick={handleFormSubmit}>
-          {loadingCreateProject ? "..." : "Enviar"}
+          {loadingEditProject ? "..." : "Enviar"}
         </FormButton>
 
-        {createProjectError ? (
-          <ErrorMessage>{createProjectError}</ErrorMessage>
+        {editProjectError ? (
+          <ErrorMessage>{editProjectError}</ErrorMessage>
         ) : null}
       </form>
     </PageContainer>
   );
 };
 
-export default connect(null, { createProject })(CreateProjectPage);
+export default connect(null, { editProject })(EditProjectPage);

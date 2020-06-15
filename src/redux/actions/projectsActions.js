@@ -1,11 +1,14 @@
 import {
-  PROJECTS,
+  FETCH_PROJECTS_REQUEST,
   FETCH_PROJECTS,
+  CREATE_PROJECT_REQUEST,
   CREATE_PROJECT,
+  EDIT_PROJECT_REQUEST,
   EDIT_PROJECT,
   SAVE_SELECTED_PROJECT,
 } from "./types";
 import { HerokuTestes } from "../../services/apis/HerokuTestes";
+import { history } from "../../router/RootNavigation";
 
 function validateProjectData({ projectData }) {
   console.log(projectData);
@@ -22,48 +25,96 @@ function validateProjectData({ projectData }) {
 }
 
 export const fetchProjects = () => async (dispatch) => {
-  dispatch({ type: PROJECTS, payload: { loading: true, error: null } });
+  dispatch({
+    type: FETCH_PROJECTS_REQUEST,
+    payload: { loading: true, error: null },
+  });
   try {
     const { data } = await HerokuTestes.get("/projects");
     dispatch({ type: FETCH_PROJECTS, payload: data });
-    dispatch({ type: PROJECTS, payload: { loading: false, error: null } });
+    dispatch({
+      type: FETCH_PROJECTS_REQUEST,
+      payload: { loading: false, error: null },
+    });
   } catch (error) {
     dispatch({
-      type: PROJECTS,
+      type: FETCH_PROJECTS_REQUEST,
       payload: { loading: false, error: error.message },
     });
   }
 };
 
 export const createProject = ({ projectData }) => async (dispatch) => {
-  dispatch({ type: PROJECTS, payload: { loading: true, error: null } });
+  dispatch({
+    type: CREATE_PROJECT_REQUEST,
+    payload: { loading: true, error: null },
+  });
   try {
     validateProjectData({ projectData });
-    const formDataObject = {};
-    const { data } = await HerokuTestes.post("/projesaascts", formDataObject);
+
+    const multipartFormData = new FormData();
+    multipartFormData.append("projectName", projectData.projectName);
+    multipartFormData.append(
+      "projectDescription",
+      projectData.projectDescription
+    );
+    multipartFormData.append(
+      "projectBugsReport",
+      projectData.projectBugsReport
+    );
+    multipartFormData.append("projectLogo", projectData.projectLogo);
+
+    const { data } = await HerokuTestes.post("/projects", multipartFormData);
     dispatch({ type: CREATE_PROJECT, payload: data });
-    dispatch({ type: PROJECTS, payload: { loading: false, error: null } });
+
+    dispatch({
+      type: CREATE_PROJECT_REQUEST,
+      payload: { loading: false, error: null },
+    });
+
+    history.push("/");
   } catch (error) {
     dispatch({
-      type: PROJECTS,
+      type: CREATE_PROJECT_REQUEST,
       payload: { loading: false, error: error.message },
     });
   }
 };
 
-export const editProject = ({ projectId }) => async (dispatch) => {
-  dispatch({ type: PROJECTS, payload: { loading: true, error: null } });
+export const editProject = ({ projectData }) => async (dispatch) => {
+  dispatch({
+    type: EDIT_PROJECT_REQUEST,
+    payload: { loading: true, error: null },
+  });
   try {
-    const editProjectPostData = {};
+    validateProjectData({ projectData });
+
+    const multipartFormData = new FormData();
+    multipartFormData.append("projectName", projectData.projectName);
+    multipartFormData.append(
+      "projectDescription",
+      projectData.projectDescription
+    );
+    multipartFormData.append(
+      "projectBugsReport",
+      projectData.projectBugsReport
+    );
+    multipartFormData.append("projectLogo", projectData.projectLogo);
+
     const { data } = await HerokuTestes.put(
-      `projects/${projectId}`,
-      editProjectPostData
+      `project/${projectData._id}`,
+      multipartFormData
     );
     dispatch({ type: EDIT_PROJECT, payload: data });
-    dispatch({ type: PROJECTS, payload: { loading: false, error: null } });
+
+    dispatch({
+      type: EDIT_PROJECT_REQUEST,
+      payload: { loading: false, error: null },
+    });
+    history.push("/");
   } catch (error) {
     dispatch({
-      type: PROJECTS,
+      type: EDIT_PROJECT_REQUEST,
       payload: { loading: false, error: error.message },
     });
   }

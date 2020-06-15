@@ -24,12 +24,7 @@ const Link = ({ isActive, children, ...props }) => {
 };
 
 export const StyledLink = styled(Link)`
-  padding: 8px 11.5px;
-  display: block;
-  box-sizing: border-box;
-  font-size: 18px;
-  margin-top: 20px;
-  font-weight: ${(p) => (p.isActive ? "bold" : "normal")};
+  font-weight: bold;
   color: black;
   text-decoration: none;
 `;
