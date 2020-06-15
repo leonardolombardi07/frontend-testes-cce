@@ -20,8 +20,6 @@ const HomePage = ({ fetchProjects }) => {
     error: { fetchProjectsError },
   } = useSelector((state) => state.requests);
 
-  console.log(fetchProjectsError);
-
   useEffect(() => {
     fetchProjects();
   }, [fetchProjects]);

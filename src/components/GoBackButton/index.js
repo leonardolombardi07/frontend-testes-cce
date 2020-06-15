@@ -1,13 +1,13 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-import { StyledLink, GoBackButtonContainer } from "./back.styled";
+import { StyledButton, GoBackButtonContainer } from "./back.styled";
 import { MdNavigateBefore } from "react-icons/md";
 
 const GoBackButton = () => {
   const history = useHistory();
   return (
-    <StyledLink
+    <StyledButton
       onClick={() => {
         history.goBack();
       }}
@@ -15,7 +15,7 @@ const GoBackButton = () => {
       <GoBackButtonContainer>
         <MdNavigateBefore size={35} />
       </GoBackButtonContainer>
-    </StyledLink>
+    </StyledButton>
   );
 };
 

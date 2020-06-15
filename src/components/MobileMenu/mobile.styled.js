@@ -12,6 +12,7 @@ export const MobileMenuContainer = styled.nav`
   background: white;
   border-right: 1px solid lightgrey;
   z-index: 1;
+  overflow-y: scroll;
 
   padding: 0px 5px;
   @media (min-width: 650px) {

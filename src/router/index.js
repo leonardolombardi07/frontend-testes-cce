@@ -1,5 +1,5 @@
 import React from "react";
-import { Router, Switch, Route } from "react-router-dom";
+import { Router, BrowserRouter, Switch, Route } from "react-router-dom";
 import { history } from "./RootNavigation";
 
 import { ThemeProvider } from "styled-components";
@@ -18,7 +18,10 @@ export default function Router_() {
 
   return (
     <ThemeProvider theme={themeState}>
-      <Router history={history}>
+      <Router
+        history={history}
+        // basename={process.env.PUBLIC_URL}
+      >
         <GlobalStyles />
         <Switch>
           <Route exact path="/" component={HomePage} />

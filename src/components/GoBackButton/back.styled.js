@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Link as ReactRouterDomLink } from "react-router-dom";
 
 export const GoBackButtonContainer = styled.div`
   position: fixed;
@@ -19,11 +18,7 @@ export const GoBackButtonContainer = styled.div`
   justify-content: center;
 `;
 
-const Link = ({ isActive, children, ...props }) => {
-  return <ReactRouterDomLink {...props}>{children}</ReactRouterDomLink>;
-};
-
-export const StyledLink = styled(Link)`
+export const StyledButton = styled.button`
   font-weight: bold;
   color: black;
   text-decoration: none;
