@@ -7,7 +7,7 @@ const CreateProjectButton = () => {
   return (
     <StyledLink to="/create-project">
       <CreateButtonContainer>
-        <MdPlusOne size={33} />
+        <MdPlusOne size={38} />
       </CreateButtonContainer>
     </StyledLink>
   );
