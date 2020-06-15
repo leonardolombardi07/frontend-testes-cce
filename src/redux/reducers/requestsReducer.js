@@ -2,7 +2,7 @@ import { PROJECTS } from "../actions/types";
 
 const initialState = {
   loading: {
-    loadingProjects: true,
+    loadingProjects: false,
   },
   error: {
     projectsError: null,

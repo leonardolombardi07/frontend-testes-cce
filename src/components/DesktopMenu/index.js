@@ -8,8 +8,6 @@ import {
 import { useSelector, connect } from "react-redux";
 import { toggleDesktopMenu, saveSelectedProject } from "../../redux/actions";
 
-import fakeData from "../MobileMenu/fakeData";
-
 const DesktopMenu = ({ toggleDesktopMenu, saveSelectedProject }) => {
   const { isDesktopMenuOpen } = useSelector((state) => state.menu);
   const { projects } = useSelector((state) => state.projects);

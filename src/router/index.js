@@ -19,7 +19,7 @@ export default function Router() {
       <BrowserRouter>
         <GlobalStyles />
         <Switch>
-          <Route exact path="/" exact component={HomePage} />
+          <Route exact path="/" component={HomePage} />
           <Route path="/project-detail" component={ProjectDetailPage} />
           <Route exact path="/create-project" component={CreateProjectPage} />
           <Route path="/signup" component={SignUpPage} />

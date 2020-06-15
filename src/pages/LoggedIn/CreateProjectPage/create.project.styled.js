@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { AiFillFileImage } from "react-icons/ai";
 
 export const ProjectHeaderContainer = styled.div`
   width: 100%;
@@ -12,6 +11,7 @@ export const ProjectHeaderContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 
   padding: 20px 0px 0px 0px;
 `;
@@ -38,20 +38,79 @@ export const ProjectLogoInput = styled.input`
   }
 `;
 
+export const ProjectNameInput = styled.input`
+  width: 70%;
+  height: 5px;
+  border: 1px solid lightgrey;
+  margin: 20px 0px;
+  padding: 15px 25px;
+  background: #ffffff;
+
+  font-size: 20px;
+  font-weight: bold;
+  color: #002;
+  text-align: center;
+
+  @media (min-width: 650px) {
+    width: 50%;
+    font-size: 22px;
+    height: 10px;
+  }
+`;
+
 export const ProjectCardContainer = styled.div`
   width: 100%;
-  height: 200px;
+  min-height: 150px;
   background: ${(p) => p.theme.secondaryBackground};
   word-wrap: break-word;
-  margin-top: 100px;
-  background: red;
+  padding: 20px 0px;
+  margin: 20px 0px;
+
+  overflow: hidden;
 `;
 
 export const Subtitle = styled.h3`
-  margin: 20px;
+  margin: 30px;
   margin-top: 30px;
 `;
 
-export const Text = styled.p`
-  margin: 20px;
+export const TextAreaInput = styled.textarea`
+  width: calc(100% - 50px);
+  height: 100px;
+  margin: 10px 20px;
+  padding: 15px 10px;
+  border: 1px solid lightgrey;
+  background: #ffffff;
+
+  font-size: 18px;
+  color: #002;
+`;
+
+export const FormButton = styled.button`
+  width: 150px;
+  height: 45px;
+  margin: 0px 20px;
+  margin-bottom: 50px;
+  background: ${(p) => p.theme.primaryTextColor};
+  border-radius: 4px;
+
+  font-size: 17px;
+  color: ${(p) => p.theme.primaryBackground};
+  font-weight: bold;
+  :hover {
+    cursor: pointer;
+  }
+`;
+
+export const ErrorMessage = styled.p`
+  font-size: 16px;
+  font-style: italic;
+  color: red;
+  word-wrap: break;
+  margin-top: 20px 0px;
+
+  @media (min-width: 650px) {
+    display: inline;
+    font-size: 20px;
+  }
 `;

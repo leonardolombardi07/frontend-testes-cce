@@ -11,8 +11,6 @@ import { IoIosClose } from "react-icons/io";
 import { useSelector, connect } from "react-redux";
 import { toggleMobileMenu, saveSelectedProject } from "../../redux/actions";
 
-import fakeData from "./fakeData";
-
 const MobileMenu = ({ toggleMobileMenu, saveSelectedProject }) => {
   const { isMobileMenuOpen } = useSelector((state) => state.menu);
   const { projects } = useSelector((state) => state.projects);

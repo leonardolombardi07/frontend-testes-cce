@@ -26,7 +26,7 @@ const HomePage = ({ fetchProjects }) => {
 
   const renderProjectCards = () => {
     return projects.map((projectData) => (
-      <ProjectCard projectData={projectData} />
+      <ProjectCard projectData={projectData} key={projectData._id} />
     ));
   };
 

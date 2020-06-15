@@ -7,7 +7,6 @@ import {
   ProjectPresentationContainer,
   UserDescription,
 } from "./project-card.styled";
-import logoFluxo from "../../assets/images/fluxo-logo.png";
 
 import { connect } from "react-redux";
 import { saveSelectedProject } from "../../redux/actions";
