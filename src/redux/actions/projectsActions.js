@@ -11,7 +11,6 @@ import { HerokuTestes } from "../../services/apis/HerokuTestes";
 import { history } from "../../router/RootNavigation";
 
 function validateProjectData({ projectData }) {
-  console.log(projectData);
   if (!projectData["projectName"] || !projectData["projectDescription"]) {
     throw new Error("Por favor dê um nome e uma descrição pro projeto");
   } else if (typeof projectData["projectLogo"] === String) {
@@ -39,7 +38,12 @@ export const fetchProjects = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: FETCH_PROJECTS_REQUEST,
-      payload: { loading: false, error: error.message },
+      payload: {
+        loading: false,
+        error: error?.response?.data
+          ? error.response.data.error
+          : error.message,
+      },
     });
   }
 };
@@ -76,7 +80,12 @@ export const createProject = ({ projectData }) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: CREATE_PROJECT_REQUEST,
-      payload: { loading: false, error: error.message },
+      payload: {
+        loading: false,
+        error: error?.response?.data
+          ? error.response.data.error
+          : error.message,
+      },
     });
   }
 };
@@ -115,7 +124,12 @@ export const editProject = ({ projectData }) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: EDIT_PROJECT_REQUEST,
-      payload: { loading: false, error: error.message },
+      payload: {
+        loading: false,
+        error: error?.response?.data
+          ? error.response.data.error
+          : error.message,
+      },
     });
   }
 };

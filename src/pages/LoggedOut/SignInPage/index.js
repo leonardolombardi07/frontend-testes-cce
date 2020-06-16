@@ -14,13 +14,14 @@ import {
   SignButton,
   ErrorMessage,
 } from "./signin.styled";
+import { Spinner } from "../../../components/Spinner";
 import logoFluxo from "../../../assets/images/fluxo-logo.png";
 import logoPodio from "../../../assets/images/podio-logo-transparent.png";
 
+import { useHistory } from "react-router-dom";
 import { useSelector, connect } from "react-redux";
 import { podioSignIn, signIn } from "../../../redux/actions";
 
-import { useHistory } from "react-router-dom";
 const SignInPage = ({ podioSignIn, signIn }) => {
   const history = useHistory();
   const {
@@ -59,7 +60,7 @@ const SignInPage = ({ podioSignIn, signIn }) => {
         <PodioButtonContainer onClick={podioSignIn}>
           <LogoPodioImage src={logoPodio} alt="podio signin" />
           <PodioButtonText>
-            {loadingPodioSignIn ? "..." : "Conecte-se com o Pódio"}
+            {loadingPodioSignIn ? <Spinner /> : "Conecte-se com o Pódio"}
           </PodioButtonText>
         </PodioButtonContainer>
 
@@ -72,15 +73,17 @@ const SignInPage = ({ podioSignIn, signIn }) => {
           />
           <InputLabel>Senha</InputLabel>
           <TextInput
+            type="password"
             name="password"
             value={formFields.password}
             onChange={handleFormChange}
           />
           <ButtonsContainer>
             <SignButton login={true} onClick={handleFormSubmit}>
-              {loadingSignIn ? "..." : "Login"}
+              {loadingSignIn ? <Spinner /> : "Login"}
             </SignButton>
             <SignButton
+              type="button"
               onClick={() => {
                 history.push("/signup");
               }}

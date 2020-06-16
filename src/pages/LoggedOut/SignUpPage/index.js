@@ -11,6 +11,7 @@ import {
   SignButton,
   ErrorMessage,
 } from "./signup.styled";
+import { Spinner } from "../../../components/Spinner";
 import GoBackButton from "../../../components/GoBackButton";
 import logoFluxo from "../../../assets/images/fluxo-logo.png";
 
@@ -78,7 +79,7 @@ const SignUpPage = ({ signUp }) => {
 
           <ButtonsContainer>
             <SignButton onClick={handleFormSubmit}>
-              {loadingSignUp ? "..." : "Cadastrar"}
+              {loadingSignUp ? <Spinner /> : "Cadastrar"}
             </SignButton>
           </ButtonsContainer>
           <ErrorMessage>{signUpError ? signUpError : null}</ErrorMessage>

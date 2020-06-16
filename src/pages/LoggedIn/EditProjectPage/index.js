@@ -12,6 +12,7 @@ import {
   FormButton,
   ErrorMessage,
 } from "./edit.project.styled";
+import { Spinner } from "../../../components/Spinner";
 import addImage from "../../../assets/images/add-image-transparent.png";
 import GoBackButton from "../../../components/GoBackButton";
 
@@ -108,7 +109,7 @@ const EditProjectPage = ({ editProject }) => {
         </ProjectCardContainer>
 
         <FormButton onClick={handleFormSubmit}>
-          {loadingEditProject ? "..." : "Enviar"}
+          {loadingEditProject ? <Spinner /> : "Enviar"}
         </FormButton>
 
         <ErrorMessage>

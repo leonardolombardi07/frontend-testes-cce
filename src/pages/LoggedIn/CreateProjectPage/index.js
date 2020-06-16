@@ -12,6 +12,7 @@ import {
   FormButton,
   ErrorMessage,
 } from "./create.project.styled";
+import { Spinner } from "../../../components/Spinner";
 import addImage from "../../../assets/images/add-image-transparent.png";
 import GoBackButton from "../../../components/GoBackButton";
 
@@ -106,7 +107,7 @@ const CreateProjectPage = ({ createProject }) => {
         </ProjectCardContainer>
 
         <FormButton onClick={handleFormSubmit}>
-          {loadingCreateProject ? "..." : "Enviar"}
+          {loadingCreateProject ? <Spinner /> : "Enviar"}
         </FormButton>
 
         <ErrorMessage>

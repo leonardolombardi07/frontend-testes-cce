@@ -24,7 +24,6 @@ export const signUp = ({ name, email, password }) => async (dispatch) => {
     dispatch({ type: SIGN_UP, payload: data });
 
     history.push("/");
-
     alert("Cadastro realizado com sucesso");
     dispatch({
       type: SIGN_UP_REQUEST,
@@ -33,7 +32,12 @@ export const signUp = ({ name, email, password }) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: SIGN_UP_REQUEST,
-      payload: { loading: false, error: error.response.data.error },
+      payload: {
+        loading: false,
+        error: error?.response?.data
+          ? error.response.data.error
+          : error.message,
+      },
     });
   }
 };
@@ -58,7 +62,12 @@ export const podioSignIn = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: PODIO_SIGN_IN_REQUEST,
-      payload: { loading: false, error: error.message },
+      payload: {
+        loading: false,
+        error: error?.response?.data
+          ? error.response.data.error
+          : error.message,
+      },
     });
   }
 };
@@ -85,7 +94,12 @@ export const signIn = ({ email, password }) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: SIGN_IN_REQUEST,
-      payload: { loading: false, error: error.response.data.error },
+      payload: {
+        loading: false,
+        error: error?.response?.data
+          ? error.response.data.error
+          : error.message,
+      },
     });
   }
 };
