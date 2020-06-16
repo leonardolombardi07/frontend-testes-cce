@@ -81,9 +81,7 @@ export const InputLabel = styled.label`
   align-self: flex-start;
 `;
 
-export const TextInput = styled.input.attrs((p) => ({
-  autoComplete: false,
-}))`
+export const TextInput = styled.input`
   width: 100%;
   height: 40px;
   box-sizing: border-box;

@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-import { StyledButton, GoBackButtonContainer } from "./back.styled";
+import { StyledButton } from "./back.styled";
 import { MdNavigateBefore } from "react-icons/md";
 
 const GoBackButton = () => {

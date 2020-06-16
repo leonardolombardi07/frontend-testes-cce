@@ -55,7 +55,7 @@ const CreateProjectPage = ({ createProject }) => {
     }));
   };
 
-  const handleFormSubmit = async (event) => {
+  const handleFormSubmit = (event) => {
     event.preventDefault();
     createProject({ projectData: formFields });
   };

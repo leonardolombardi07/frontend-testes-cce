@@ -54,7 +54,7 @@ const EditProjectPage = ({ editProject }) => {
       [event.target.name]: handleFormType(event.target.type),
     }));
   };
-  const handleFormSubmit = async (event) => {
+  const handleFormSubmit = (event) => {
     event.preventDefault();
     editProject({ projectData: formFields });
   };

@@ -1,5 +1,5 @@
 import React from "react";
-import { Router, BrowserRouter, Switch, Route } from "react-router-dom";
+import { Router, Switch, Route } from "react-router-dom";
 import { history } from "./RootNavigation";
 
 import { ThemeProvider } from "styled-components";

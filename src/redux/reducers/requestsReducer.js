@@ -1,4 +1,7 @@
 import {
+  SIGN_UP_REQUEST,
+  PODIO_SIGN_IN_REQUEST,
+  SIGN_IN_REQUEST,
   FETCH_PROJECTS_REQUEST,
   CREATE_PROJECT_REQUEST,
   EDIT_PROJECT_REQUEST,
@@ -6,11 +9,17 @@ import {
 
 const initialState = {
   loading: {
+    loadingSignUp: false,
+    loadingPodioSignIn: false,
+    loadingSignIn: false,
     loadingFetchProjects: false,
     loadingCreateProject: false,
     loadingEditProject: false,
   },
   error: {
+    signUpError: null,
+    podioSignInError: null,
+    signInError: null,
     fetchProjectsError: null,
     createProjectError: null,
     editProjectError: null,
@@ -19,6 +28,39 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case SIGN_UP_REQUEST:
+      return {
+        loading: {
+          ...state.loading,
+          loadingSignUp: action.payload.loading,
+        },
+        error: {
+          ...state.error,
+          signUpError: action.payload.error,
+        },
+      };
+    case PODIO_SIGN_IN_REQUEST:
+      return {
+        loading: {
+          ...state.loading,
+          loadingPodioSignIn: action.payload.loading,
+        },
+        error: {
+          ...state.error,
+          podioSignInError: action.payload.error,
+        },
+      };
+    case SIGN_IN_REQUEST:
+      return {
+        loading: {
+          ...state.loading,
+          loadingSignIn: action.payload.loading,
+        },
+        error: {
+          ...state.error,
+          signInError: action.payload.error,
+        },
+      };
     case FETCH_PROJECTS_REQUEST:
       return {
         loading: {
