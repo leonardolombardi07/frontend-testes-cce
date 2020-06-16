@@ -6,9 +6,13 @@ import {
 } from "./desktop.styled";
 
 import { useSelector, connect } from "react-redux";
-import { toggleDesktopMenu, saveSelectedProject } from "../../redux/actions";
+import {
+  toggleDesktopMenu,
+  saveSelectedProject,
+  signOut,
+} from "../../redux/actions";
 
-const DesktopMenu = ({ toggleDesktopMenu, saveSelectedProject }) => {
+const DesktopMenu = ({ toggleDesktopMenu, saveSelectedProject, signOut }) => {
   const { isDesktopMenuOpen } = useSelector((state) => state.menu);
   const { projects } = useSelector((state) => state.projects);
 
@@ -35,8 +39,14 @@ const DesktopMenu = ({ toggleDesktopMenu, saveSelectedProject }) => {
         <StyledLink to="/" onClick={() => toggleDesktopMenu()}>
           Home
         </StyledLink>
-        <StyledLink to="/login" onClick={() => toggleDesktopMenu()}>
-          Login
+        <StyledLink
+          to="/signin"
+          onClick={() => {
+            toggleDesktopMenu();
+            signOut();
+          }}
+        >
+          Logout
         </StyledLink>
 
         {renderProjectLinks()}
@@ -45,6 +55,8 @@ const DesktopMenu = ({ toggleDesktopMenu, saveSelectedProject }) => {
   );
 };
 
-export default connect(null, { toggleDesktopMenu, saveSelectedProject })(
-  DesktopMenu
-);
+export default connect(null, {
+  toggleDesktopMenu,
+  saveSelectedProject,
+  signOut,
+})(DesktopMenu);

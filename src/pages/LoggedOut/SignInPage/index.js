@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { PageContainer } from "../../../constants/styled-components";
 import {
@@ -12,6 +12,7 @@ import {
   TextInput,
   ButtonsContainer,
   SignButton,
+  ErrorMessage,
 } from "./signin.styled";
 import logoFluxo from "../../../assets/images/fluxo-logo.png";
 import logoPodio from "../../../assets/images/podio-logo-transparent.png";
@@ -19,17 +20,34 @@ import logoPodio from "../../../assets/images/podio-logo-transparent.png";
 import { useSelector, connect } from "react-redux";
 import { podioSignIn, signIn } from "../../../redux/actions";
 
+import { useHistory } from "react-router-dom";
 const SignInPage = ({ podioSignIn, signIn }) => {
+  const history = useHistory();
   const {
-    loading: { loadingPodioSignIn },
-    error: { podioSignInError },
+    loading: { loadingPodioSignIn, loadingSignIn },
+    error: { podioSignInError, signInError },
   } = useSelector((state) => state.requests);
 
-  const state = useSelector((state) => state.auth);
+  const [formFields, setFormFields] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleFormChange = (event) => {
+    event.persist();
+
+    setFormFields((previousState) => ({
+      ...previousState,
+      [event.target.name]: event.target.value,
+    }));
+  };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    signIn();
+    signIn({
+      email: formFields.email,
+      password: formFields.password,
+    });
   };
 
   return (
@@ -47,13 +65,30 @@ const SignInPage = ({ podioSignIn, signIn }) => {
 
         <form onSubmit={handleFormSubmit}>
           <InputLabel>E-mail</InputLabel>
-          <TextInput />
+          <TextInput
+            name="email"
+            value={formFields.email}
+            onChange={handleFormChange}
+          />
           <InputLabel>Senha</InputLabel>
-          <TextInput />
+          <TextInput
+            name="password"
+            value={formFields.password}
+            onChange={handleFormChange}
+          />
           <ButtonsContainer>
-            <SignButton login={true}>Login</SignButton>
-            <SignButton>Cadastro</SignButton>
+            <SignButton login={true} onClick={handleFormSubmit}>
+              {loadingSignIn ? "..." : "Login"}
+            </SignButton>
+            <SignButton
+              onClick={() => {
+                history.push("/signup");
+              }}
+            >
+              Cadastro
+            </SignButton>
           </ButtonsContainer>
+          <ErrorMessage>{signInError ? signInError : null}</ErrorMessage>
         </form>
       </SignInModal>
     </PageContainer>

@@ -7,15 +7,25 @@ import {
   SIGN_IN,
   SIGN_OUT,
 } from "./types";
-import { HerokuTestes } from "../../services/apis/HerokuTestes";
+import { HerokuTestesJSON } from "../../services/apis/HerokuTestes";
+import { history } from "../../router/RootNavigation";
 
-export const signUp = () => async (dispatch) => {
+export const signUp = ({ name, email, password }) => async (dispatch) => {
   dispatch({ type: SIGN_UP_REQUEST, payload: { loading: true, error: null } });
 
   try {
-    const { data } = await HerokuTestes.post("/auth/signup");
+    const jsonPostData = JSON.stringify({
+      name,
+      email,
+      password,
+    });
+
+    const { data } = await HerokuTestesJSON.post("/auth/signup", jsonPostData);
     dispatch({ type: SIGN_UP, payload: data });
 
+    history.push("/");
+
+    alert("Cadastro realizado com sucesso");
     dispatch({
       type: SIGN_UP_REQUEST,
       payload: { loading: false, error: null },
@@ -23,7 +33,7 @@ export const signUp = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: SIGN_UP_REQUEST,
-      payload: { loading: false, error: error.message },
+      payload: { loading: false, error: error.response.data.error },
     });
   }
 };
@@ -35,8 +45,11 @@ export const podioSignIn = () => async (dispatch) => {
   });
 
   try {
-    const { data } = await HerokuTestes.get("/auth/podio");
-    dispatch({ type: PODIO_SIGN_IN, payload: data });
+    const { data } = await HerokuTestesJSON.get("/auth/podio");
+    const podioCallBackUrl = data;
+
+    window.open(podioCallBackUrl);
+    // dispatch({ type: PODIO_SIGN_IN, payload: data });
 
     dispatch({
       type: PODIO_SIGN_IN_REQUEST,
@@ -50,15 +63,20 @@ export const podioSignIn = () => async (dispatch) => {
   }
 };
 
-export const signIn = () => async (dispatch) => {
+export const signIn = ({ email, password }) => async (dispatch) => {
   dispatch({
     type: SIGN_IN_REQUEST,
     payload: { loading: true, error: null },
   });
 
   try {
-    const { data } = await HerokuTestes.get("/auth/signin");
+    const jsonPostData = JSON.stringify({
+      email,
+      password,
+    });
+    const { data } = await HerokuTestesJSON.post("/auth/signin", jsonPostData);
     dispatch({ type: SIGN_IN, payload: data });
+    history.push("/");
 
     dispatch({
       type: SIGN_IN_REQUEST,
@@ -67,7 +85,7 @@ export const signIn = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: SIGN_IN_REQUEST,
-      payload: { loading: false, error: error.message },
+      payload: { loading: false, error: error.response.data.error },
     });
   }
 };

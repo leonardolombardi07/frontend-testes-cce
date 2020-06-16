@@ -10,7 +10,7 @@ const composeEnhancers = composeWithDevTools({});
 const persistConfig = {
   key: "root",
   storage: storage,
-  whitelist: ["projects", "theme"],
+  whitelist: ["projects", "theme", "auth"],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);

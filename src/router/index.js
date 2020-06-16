@@ -1,5 +1,6 @@
 import React from "react";
 import { Router, Switch, Route } from "react-router-dom";
+import PrivateRoute from "./PrivateRoute";
 import { history } from "./RootNavigation";
 
 import { ThemeProvider } from "styled-components";
@@ -15,18 +16,40 @@ import EditProjectPage from "../pages/LoggedIn/EditProjectPage";
 
 export default function Router_() {
   const themeState = useSelector((state) => state.theme);
+  const { token } = useSelector((state) => state.auth);
 
   return (
     <ThemeProvider theme={themeState}>
       <Router history={history}>
         <GlobalStyles />
         <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/project-detail" component={ProjectDetailPage} />
-          <Route exact path="/create-project" component={CreateProjectPage} />
-          <Route exact path="/edit-project" component={EditProjectPage} />
-          <Route path="/signup" component={SignUpPage} />
           <Route path="/signin" component={SignInPage} />
+          <Route path="/signup" component={SignUpPage} />
+
+          <PrivateRoute
+            exact
+            path="/"
+            component={HomePage}
+            hasAuthToken={token}
+          />
+
+          <PrivateRoute
+            path="/project-detail"
+            component={ProjectDetailPage}
+            hasAuthToken={token}
+          />
+
+          <PrivateRoute
+            path="/create-project"
+            component={CreateProjectPage}
+            hasAuthToken={token}
+          />
+
+          <PrivateRoute
+            path="/edit-project"
+            component={EditProjectPage}
+            hasAuthToken={token}
+          />
         </Switch>
       </Router>
     </ThemeProvider>

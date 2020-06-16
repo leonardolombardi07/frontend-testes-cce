@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SignInModal = styled.div`
+export const SignUpModal = styled.div`
   box-shadow: 0 0 35px 0 rgba(0, 0, 0, 0.5);
   max-width: 80%;
   margin: auto;
@@ -36,43 +36,6 @@ export const LogoFluxoImage = styled.img`
   opacity: 1;
 `;
 
-export const PodioButtonContainer = styled.div`
-  box-sizing: border-box;
-  width: 100%;
-  height: 55px;
-  margin-bottom: 40px;
-  background: #e8f0fe;
-
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-
-  :hover {
-    cursor: pointer;
-  }
-`;
-
-export const LogoPodioImage = styled.img`
-  max-width: 70%;
-  max-height: 70%;
-  margin-left: 10px;
-  display: block;
-  opacity: 1;
-`;
-
-export const PodioButtonText = styled.h2`
-  padding: 0px;
-  margin: 0px 20px;
-  margin: 0 0 0px 20px;
-  color: #666;
-  font-weight: 400;
-  font-size: 16px;
-
-  @media (min-width: 650px) {
-    font-size: 20px;
-  }
-`;
-
 export const InputLabel = styled.label`
   color: ${(p) => p.theme.primaryTextColor};
   font-size: 17px;
@@ -97,7 +60,7 @@ export const TextInput = styled.input`
 export const ButtonsContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
 `;
 

@@ -9,9 +9,13 @@ import {
 import { IoIosClose } from "react-icons/io";
 
 import { useSelector, connect } from "react-redux";
-import { toggleMobileMenu, saveSelectedProject } from "../../redux/actions";
+import {
+  toggleMobileMenu,
+  saveSelectedProject,
+  signOut,
+} from "../../redux/actions";
 
-const MobileMenu = ({ toggleMobileMenu, saveSelectedProject }) => {
+const MobileMenu = ({ toggleMobileMenu, saveSelectedProject, signOut }) => {
   const { isMobileMenuOpen } = useSelector((state) => state.menu);
   const { projects } = useSelector((state) => state.projects);
 
@@ -42,8 +46,14 @@ const MobileMenu = ({ toggleMobileMenu, saveSelectedProject }) => {
           <StyledLink to="/" onClick={() => toggleMobileMenu()}>
             Home
           </StyledLink>
-          <StyledLink to="/login" onClick={() => toggleMobileMenu()}>
-            Login
+          <StyledLink
+            to="/signin"
+            onClick={() => {
+              toggleMobileMenu();
+              signOut();
+            }}
+          >
+            Logout
           </StyledLink>
           {renderProjectLinks()}
         </MobileMenuItensContainer>
@@ -52,6 +62,8 @@ const MobileMenu = ({ toggleMobileMenu, saveSelectedProject }) => {
   );
 };
 
-export default connect(null, { toggleMobileMenu, saveSelectedProject })(
-  MobileMenu
-);
+export default connect(null, {
+  toggleMobileMenu,
+  saveSelectedProject,
+  signOut,
+})(MobileMenu);
