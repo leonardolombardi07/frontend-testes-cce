@@ -6,13 +6,14 @@ export const ProjectHeaderContainer = styled.div`
   background: orange;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  text-align: center;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  padding: 20px 0px 0px 0px;
+  word-break: break-all;
 `;
 
 export const ProjectLogo = styled.img`

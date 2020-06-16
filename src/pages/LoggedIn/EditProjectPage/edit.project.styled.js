@@ -41,7 +41,9 @@ export const ProjectLogoInput = styled.input`
   }
 `;
 
-export const ProjectNameInput = styled.input`
+export const ProjectNameInput = styled.input.attrs((p) => ({
+  maxLength: 20,
+}))`
   width: 70%;
   height: 5px;
   border: 1px solid lightgrey;

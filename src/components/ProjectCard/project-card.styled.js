@@ -19,10 +19,14 @@ export const ProjectCardContainer = styled.div`
 
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+  overflow-y: scroll;
 
   :hover {
     cursor: pointer;
+  }
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
   }
 `;
 
