@@ -5,6 +5,7 @@ export const DEFAULT_THEME = {
   bannerBackground: "rgba(255, 255, 255, 0.3)",
   scrollViewThumbColor: "black",
   primaryTextColor: "black",
+  loginButtonBackgroundColor: "orange",
 };
 
 export const DARK_THEME = {
@@ -14,4 +15,5 @@ export const DARK_THEME = {
   bannerBackground: "rgba(255, 255, 255, 0.7)",
   scrollViewThumbColor: "lightgrey",
   primaryTextColor: "#FFFFFF",
+  loginButtonBackgroundColor: "#FFFFFF",
 };

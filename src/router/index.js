@@ -18,10 +18,7 @@ export default function Router_() {
 
   return (
     <ThemeProvider theme={themeState}>
-      <Router
-        history={history}
-        // basename={process.env.PUBLIC_URL}
-      >
+      <Router history={history}>
         <GlobalStyles />
         <Switch>
           <Route exact path="/" component={HomePage} />

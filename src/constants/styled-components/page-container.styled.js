@@ -24,10 +24,10 @@ const ContainerLayout = styled.div`
   }
 `;
 
-export const PageContainer = ({ children }) => {
+export const PageContainer = ({ children, type }) => {
   return (
     <>
-      <Header />
+      {type === "auth" ? null : <Header />}
       <DesktopMenu />
       <MobileMenu />
       <ContainerLayout>{children}</ContainerLayout>

@@ -29,7 +29,7 @@ const Header = ({ toggleMobileMenu, toggleDesktopMenu }) => {
           <GrMenu size={26} />
         </HeaderMobileMenuIcon>
         <HeaderLogo src={fluxoLogo} />
-        <HeaderTitle>Capacitações CCE</HeaderTitle>
+        <HeaderTitle>Testes CCE</HeaderTitle>
       </HeaderDiv>
       <HeaderDiv>
         <Switcher />
