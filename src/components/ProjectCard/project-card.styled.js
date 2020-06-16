@@ -13,9 +13,13 @@ export const StyledLink = styled(Link)`
 
 export const ProjectCardContainer = styled.div`
   width: 290px;
-  height: 350px;
+  min-height: 350px;
   border: 1px solid lightgrey;
   margin: 20px auto;
+
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
 
   :hover {
     cursor: pointer;
@@ -28,12 +32,14 @@ export const ProjectCardLogo = styled.img`
 `;
 
 export const ProjectPresentationContainer = styled.div`
-  width: 100%;
+  width: 85%;
   height: 150px;
   padding: 20px;
+  word-wrap: break-word;
 `;
 
 export const UserDescription = styled.p`
   margin-left: 4px;
   margin-top: 10px;
+  justify-content: flex-start;
 `;

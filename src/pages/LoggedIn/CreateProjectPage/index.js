@@ -109,9 +109,9 @@ const CreateProjectPage = ({ createProject }) => {
           {loadingCreateProject ? "..." : "Enviar"}
         </FormButton>
 
-        {createProjectError ? (
-          <ErrorMessage>{createProjectError}</ErrorMessage>
-        ) : null}
+        <ErrorMessage>
+          {createProjectError ? createProjectError : null}
+        </ErrorMessage>
       </form>
       <GoBackButton />
     </PageContainer>

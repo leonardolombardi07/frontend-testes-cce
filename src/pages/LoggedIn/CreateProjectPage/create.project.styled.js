@@ -93,7 +93,6 @@ export const FormButton = styled.button`
   width: 150px;
   height: 45px;
   margin: 0px 20px;
-  margin-bottom: 50px;
   background: ${(p) => p.theme.primaryTextColor};
   border-radius: 4px;
 
@@ -110,7 +109,7 @@ export const ErrorMessage = styled.p`
   font-style: italic;
   color: red;
   word-wrap: break;
-  margin-top: 20px 0px;
+  margin: 20px 0px 0px 20px;
 
   @media (min-width: 650px) {
     display: inline;

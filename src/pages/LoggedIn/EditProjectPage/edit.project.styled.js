@@ -17,8 +17,6 @@ export const ProjectHeaderContainer = styled.div`
 `;
 
 export const ProjectLogoPlaceholder = styled.div`
-  /* height: 200px;
-  width: 200px; */
   width: 350px;
   max-width: 80%;
   height: 200px;
@@ -101,7 +99,6 @@ export const FormButton = styled.button`
   width: 150px;
   height: 45px;
   margin: 0px 20px;
-  margin-bottom: 50px;
   background: ${(p) => p.theme.primaryTextColor};
   border-radius: 4px;
 
@@ -118,7 +115,7 @@ export const ErrorMessage = styled.p`
   font-style: italic;
   color: red;
   word-wrap: break;
-  margin-top: 20px 0px;
+  margin: 20px 0px 0px 20px;
 
   @media (min-width: 650px) {
     display: inline;

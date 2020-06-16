@@ -8,7 +8,7 @@ import DesktopMenu from "../../components/DesktopMenu";
 const ContainerLayout = styled.div`
   max-width: 1000px;
   margin: 80px auto 24px auto;
-  padding: 0 16px;
+  padding: 20px 16px 80px 16px;
   box-sizing: "border-box";
   font-family: "Lato", sans-serif;
   min-height: 100%;

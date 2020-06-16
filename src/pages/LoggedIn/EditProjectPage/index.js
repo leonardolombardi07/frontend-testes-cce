@@ -111,9 +111,9 @@ const EditProjectPage = ({ editProject }) => {
           {loadingEditProject ? "..." : "Enviar"}
         </FormButton>
 
-        {editProjectError ? (
-          <ErrorMessage>{editProjectError}</ErrorMessage>
-        ) : null}
+        <ErrorMessage>
+          {editProjectError ? editProjectError : null}
+        </ErrorMessage>
       </form>
       <GoBackButton />
     </PageContainer>
