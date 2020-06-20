@@ -91,7 +91,7 @@ const EditProjectPage = ({ editProject }) => {
         </ProjectHeaderContainer>
 
         <ProjectCardContainer>
-          <Subtitle>Description</Subtitle>
+          <Subtitle>Descrição</Subtitle>
           <TextAreaInput
             name="projectDescription"
             value={formFields.projectDescription}

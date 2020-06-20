@@ -13,6 +13,7 @@ import {
   ButtonsContainer,
   SignButton,
   ErrorMessage,
+  StyledLink,
 } from "./signin.styled";
 import { Spinner } from "../../../components/Spinner";
 import logoFluxo from "../../../assets/images/fluxo-logo.png";
@@ -91,8 +92,11 @@ const SignInPage = ({ podioSignIn, signIn }) => {
               Cadastro
             </SignButton>
           </ButtonsContainer>
-          <ErrorMessage>{signInError ? signInError : null}</ErrorMessage>
+          <ErrorMessage errorMessage={signInError}>
+            {signInError ? signInError : "..."}
+          </ErrorMessage>
         </form>
+        <StyledLink to="/forgot-password">Esqueceu sua senha?</StyledLink>
       </SignInModal>
     </PageContainer>
   );

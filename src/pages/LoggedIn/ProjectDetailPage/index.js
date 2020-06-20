@@ -38,7 +38,7 @@ const ProjectDetailPage = () => {
         </ProjectTitle>
       </ProjectHeaderContainer>
       <ProjectCardContainer>
-        <Subtitle>Description</Subtitle>
+        <Subtitle>Descrição</Subtitle>
         <Text>
           {selectedProject?.projectDescription
             ? selectedProject.projectDescription

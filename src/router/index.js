@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 
 import SignInPage from "../pages/LoggedOut/SignInPage";
 import SignUpPage from "../pages/LoggedOut/SignUpPage";
+import ForgotPasswordPage from "../pages/LoggedOut/ForgotPasswordPage";
 import HomePage from "../pages/LoggedIn/HomePage";
 import ProjectDetailPage from "../pages/LoggedIn/ProjectDetailPage";
 import CreateProjectPage from "../pages/LoggedIn/CreateProjectPage";
@@ -25,6 +26,7 @@ export default function Router_() {
         <Switch>
           <Route path="/signin" component={SignInPage} />
           <Route path="/signup" component={SignUpPage} />
+          <Route path="/forgot-password" component={ForgotPasswordPage} />
 
           <PrivateRoute
             exact

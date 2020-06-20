@@ -1,15 +1,17 @@
 // Requests Action Types
 export const SIGN_UP_REQUEST = "SIGN_UP_REQUEST";
-export const SIGN_IN_REQUEST = "SIGN_IN_REQUEST";
 export const PODIO_SIGN_IN_REQUEST = "PODIO_SIGN_IN_REQUEST";
+export const SIGN_IN_REQUEST = "SIGN_IN_REQUEST";
+export const FORGOT_PASSWORD_REQUEST = "FORGOT_PASSWORD_REQUEST";
 export const FETCH_PROJECTS_REQUEST = "FETCH_PROJECTS_REQUEST";
 export const CREATE_PROJECT_REQUEST = "CREATE_PROJECT_REQUEST";
 export const EDIT_PROJECT_REQUEST = "EDIT_PROJECT_REQUEST";
 
 // Auth Action Types
 export const SIGN_UP = "SIGN_UP";
-export const SIGN_IN = "SIGN_IN";
 export const PODIO_SIGN_IN = "PODIO_SIGN_IN";
+export const SIGN_IN = "SIGN_IN";
+export const FORGOT_PASSWORD = "FORGOT_PASSWORD";
 export const SIGN_OUT = "SIGN_OUT";
 
 // Menu Action Types

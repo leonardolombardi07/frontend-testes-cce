@@ -5,9 +5,14 @@ import {
   SIGN_UP,
   PODIO_SIGN_IN,
   SIGN_IN,
+  FORGOT_PASSWORD,
   SIGN_OUT,
+  FORGOT_PASSWORD_REQUEST,
 } from "./types";
-import { HerokuTestesJSON } from "../../services/apis/HerokuTestes";
+import {
+  HerokuTestesJSON,
+  HerokuTestes,
+} from "../../services/apis/HerokuTestes";
 import { history } from "../../router/RootNavigation";
 
 export const signUp = ({ name, email, password }) => async (dispatch) => {
@@ -43,6 +48,7 @@ export const signUp = ({ name, email, password }) => async (dispatch) => {
 };
 
 export const podioSignIn = () => async (dispatch) => {
+  // Consertar essa função
   dispatch({
     type: PODIO_SIGN_IN_REQUEST,
     payload: { loading: true, error: null },
@@ -51,7 +57,6 @@ export const podioSignIn = () => async (dispatch) => {
   try {
     const { data } = await HerokuTestesJSON.get("/auth/podio");
     const podioCallBackUrl = data;
-
     window.open(podioCallBackUrl);
     // dispatch({ type: PODIO_SIGN_IN, payload: data });
 
@@ -85,8 +90,8 @@ export const signIn = ({ email, password }) => async (dispatch) => {
     });
     const { data } = await HerokuTestesJSON.post("/auth/signin", jsonPostData);
     dispatch({ type: SIGN_IN, payload: data });
-    history.push("/");
 
+    history.push("/");
     dispatch({
       type: SIGN_IN_REQUEST,
       payload: { loading: false, error: null },
@@ -99,6 +104,40 @@ export const signIn = ({ email, password }) => async (dispatch) => {
         error: error?.response?.data
           ? error.response.data.error
           : error.message,
+      },
+    });
+  }
+};
+
+export const forgotPassword = ({ email }) => async (dispatch) => {
+  dispatch({
+    type: FORGOT_PASSWORD_REQUEST,
+    payload: {
+      loading: true,
+      error: null,
+    },
+  });
+
+  try {
+    const jsonPostData = JSON.stringify({
+      email,
+    });
+    const { data } = await HerokuTestesJSON.post("/auth/forgot", jsonPostData);
+    dispatch({ type: FORGOT_PASSWORD, payload: data });
+
+    dispatch({
+      type: FORGOT_PASSWORD_REQUEST,
+      payload: {
+        loading: false,
+        error: null,
+      },
+    });
+  } catch (error) {
+    dispatch({
+      type: FORGOT_PASSWORD_REQUEST,
+      payload: {
+        loading: false,
+        error: error.message,
       },
     });
   }

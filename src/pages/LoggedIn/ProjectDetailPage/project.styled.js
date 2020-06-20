@@ -45,4 +45,5 @@ export const Subtitle = styled.h3`
 
 export const Text = styled.p`
   margin: 20px;
+  white-space: pre-wrap;
 `;

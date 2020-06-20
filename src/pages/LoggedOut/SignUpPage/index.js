@@ -82,10 +82,12 @@ const SignUpPage = ({ signUp }) => {
               {loadingSignUp ? <Spinner /> : "Cadastrar"}
             </SignButton>
           </ButtonsContainer>
-          <ErrorMessage>{signUpError ? signUpError : null}</ErrorMessage>
+          <ErrorMessage errorMessage={signUpError}>
+            {signUpError ? signUpError : "..."}
+          </ErrorMessage>
         </form>
       </SignUpModal>
-      <GoBackButton />
+      <GoBackButton path="/signin" />
     </PageContainer>
   );
 };

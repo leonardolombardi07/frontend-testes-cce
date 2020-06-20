@@ -1,11 +1,14 @@
+import React from "react";
 import styled from "styled-components";
+import { Link as ReactRouterDomLink } from "react-router-dom";
 
 export const SignInModal = styled.div`
   box-shadow: 0 0 35px 0 rgba(0, 0, 0, 0.5);
   max-width: 80%;
   margin: auto;
-  padding: 30px 30px 30px 30px;
+  padding: 30px;
   background: white;
+  height: 600px;
 
   display: flex;
   flex-direction: column;
@@ -15,6 +18,8 @@ export const SignInModal = styled.div`
   @media (min-width: 650px) {
     min-width: 400px;
     max-width: 500px;
+    padding: 30px;
+    height: 600px;
   }
 `;
 
@@ -120,7 +125,18 @@ export const SignButton = styled.button`
 export const ErrorMessage = styled.p`
   font-size: 17px;
   font-style: italic;
-  color: red;
+  color: ${(p) => (p.errorMessage ? "red" : p.theme.primaryBackground)};
   text-align: center;
   margin: 5px 0px 0px 20px;
+`;
+
+const Link = ({ isActive, children, ...props }) => {
+  return <ReactRouterDomLink {...props}>{children}</ReactRouterDomLink>;
+};
+
+export const StyledLink = styled(Link)`
+  font-weight: bold;
+  color: #ff9b48;
+  text-decoration: none;
+  margin-top: 10px;
 `;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SignUpModal = styled.div`
+export const SignInModal = styled.div`
   box-shadow: 0 0 35px 0 rgba(0, 0, 0, 0.5);
   max-width: 80%;
   margin: auto;
@@ -11,6 +11,7 @@ export const SignUpModal = styled.div`
   flex-direction: column;
   align-items: center;
   background: ${(p) => p.theme.secondaryBackground};
+  text-align: center;
 
   @media (min-width: 650px) {
     min-width: 400px;
@@ -18,30 +19,19 @@ export const SignUpModal = styled.div`
   }
 `;
 
-export const LogoFluxoContainer = styled.div`
-  width: 80%;
-  height: 100px;
-  margin: 40px 0px;
+export const IconContainer = styled.div`
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+  border: 1px solid black;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
 `;
 
-export const LogoFluxoImage = styled.img`
-  border: 1px solid lightgrey;
-  max-width: 100%;
-  max-height: 100%;
-  display: block;
-  opacity: 1;
-`;
-
-export const InputLabel = styled.label`
-  color: ${(p) => p.theme.primaryTextColor};
-  font-size: 17px;
-  font-weight: bold;
-  margin-left: 11px;
-  align-self: flex-start;
+export const Title = styled.h2`
+  color: black;
 `;
 
 export const TextInput = styled.input`
@@ -57,19 +47,11 @@ export const TextInput = styled.input`
   font-size: 17px;
 `;
 
-export const ButtonsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
-`;
-
 export const SignButton = styled.button`
   width: 100%;
   height: 50px;
   background: ${(p) =>
     p.login ? "black" : p.theme.loginButtonBackgroundColor};
-  margin: 22px 0;
   border-radius: 4px;
 
   font-size: 17px;
@@ -83,7 +65,7 @@ export const SignButton = styled.button`
 export const ErrorMessage = styled.p`
   font-size: 17px;
   font-style: italic;
-  color: ${(p) => (p.errorMessage ? "red" : "#FFFFFF")};
+  color: ${(p) => (p.errorMessage ? "red" : p.theme.primaryBackground)};
   text-align: center;
-  margin: 5px 0px 0px 20px;
+  margin: 20px 0px 0px 20px;
 `;

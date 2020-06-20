@@ -5,6 +5,7 @@ import {
   FETCH_PROJECTS_REQUEST,
   CREATE_PROJECT_REQUEST,
   EDIT_PROJECT_REQUEST,
+  FORGOT_PASSWORD_REQUEST,
 } from "../actions/types";
 
 const initialState = {
@@ -12,6 +13,8 @@ const initialState = {
     loadingSignUp: false,
     loadingPodioSignIn: false,
     loadingSignIn: false,
+    loadingForgotPassword: false,
+
     loadingFetchProjects: false,
     loadingCreateProject: false,
     loadingEditProject: false,
@@ -20,6 +23,8 @@ const initialState = {
     signUpError: null,
     podioSignInError: null,
     signInError: null,
+    forgotPasswordError: null,
+
     fetchProjectsError: null,
     createProjectError: null,
     editProjectError: null,
@@ -59,6 +64,17 @@ export default (state = initialState, action) => {
         error: {
           ...state.error,
           signInError: action.payload.error,
+        },
+      };
+    case FORGOT_PASSWORD_REQUEST:
+      return {
+        loading: {
+          ...state.loading,
+          loadingForgotPassword: action.payload.loading,
+        },
+        error: {
+          ...state.error,
+          forgotPasswordError: action.payload.error,
         },
       };
     case FETCH_PROJECTS_REQUEST:
