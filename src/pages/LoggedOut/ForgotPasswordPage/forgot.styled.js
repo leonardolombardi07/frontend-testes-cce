@@ -58,6 +58,7 @@ export const TextInput = styled.input`
 export const SignButton = styled.button`
   width: 100%;
   height: 50px;
+  margin: 22px 0 0 0;
   background: ${(p) =>
     p.login ? "black" : p.theme.loginButtonBackgroundColor};
   border-radius: 4px;
