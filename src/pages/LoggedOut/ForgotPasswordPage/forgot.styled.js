@@ -34,6 +34,14 @@ export const Title = styled.h2`
   color: black;
 `;
 
+export const InputLabel = styled.label`
+  color: ${(p) => p.theme.primaryTextColor};
+  font-size: 17px;
+  font-weight: bold;
+  margin-left: 11px;
+  align-self: flex-start;
+`;
+
 export const TextInput = styled.input`
   width: 100%;
   height: 40px;

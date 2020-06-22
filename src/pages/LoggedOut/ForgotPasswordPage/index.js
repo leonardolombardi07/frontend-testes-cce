@@ -5,6 +5,7 @@ import {
   SignInModal,
   IconContainer,
   Title,
+  InputLabel,
   TextInput,
   SignButton,
   ErrorMessage,
@@ -22,15 +23,24 @@ const ForgotPasswordPage = ({ forgotPassword }) => {
     error: { forgotPasswordError },
   } = useSelector((state) => state.requests);
 
-  const [email, setEmail] = useState("");
+  const [formFields, setFormFields] = useState({
+    email: "",
+    newPassword: "",
+  });
 
   const handleInputChange = (event) => {
     event.persist();
-    setEmail(event.target.value);
+    setFormFields((previousState) => ({
+      ...previousState,
+      [event.target.name]: event.target.value,
+    }));
   };
 
   const handleSubmit = () => {
-    forgotPassword({ email });
+    forgotPassword({
+      email: formFields.email,
+      newPassword: formFields.newPassword,
+    });
   };
 
   return (
@@ -41,17 +51,33 @@ const ForgotPasswordPage = ({ forgotPassword }) => {
         </IconContainer>
         <Title>Redefinir minha senha</Title>
         <p>
-          Insira o seu email e enviaremos um link para você voltar a acessar a
-          sua conta.
+          Insira o seu email e sua nova senha. Enviaremos um link para você
+          voltar a acessar a sua conta.
         </p>
-        <TextInput name="email" value={email} onChange={handleInputChange} />
+
+        <InputLabel>Email</InputLabel>
+        <TextInput
+          name="email"
+          value={formFields.email}
+          onChange={handleInputChange}
+        />
+
+        <InputLabel>Nova senha</InputLabel>
+        <TextInput
+          name="newPassword"
+          value={formFields.newPassword}
+          onChange={handleInputChange}
+        />
+
         <SignButton onClick={handleSubmit}>
           {loadingForgotPassword ? <Spinner /> : "Enviar"}
         </SignButton>
+
         <ErrorMessage errorMessage={forgotPasswordError}>
           {forgotPasswordError ? forgotPasswordError : "..."}
         </ErrorMessage>
       </SignInModal>
+
       <GoBackButton path="signin" />
     </PageContainer>
   );

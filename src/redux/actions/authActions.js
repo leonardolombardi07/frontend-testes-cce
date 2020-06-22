@@ -109,7 +109,7 @@ export const signIn = ({ email, password }) => async (dispatch) => {
   }
 };
 
-export const forgotPassword = ({ email }) => async (dispatch) => {
+export const forgotPassword = ({ email, newPassword }) => async (dispatch) => {
   dispatch({
     type: FORGOT_PASSWORD_REQUEST,
     payload: {
@@ -121,8 +121,12 @@ export const forgotPassword = ({ email }) => async (dispatch) => {
   try {
     const jsonPostData = JSON.stringify({
       email,
+      newPassword,
     });
-    const { data } = await HerokuTestesJSON.post("/auth/forgot", jsonPostData);
+    const { data } = await HerokuTestesJSON.post(
+      "/auth/forgot-password",
+      jsonPostData
+    );
     dispatch({ type: FORGOT_PASSWORD, payload: data });
 
     dispatch({
@@ -137,7 +141,9 @@ export const forgotPassword = ({ email }) => async (dispatch) => {
       type: FORGOT_PASSWORD_REQUEST,
       payload: {
         loading: false,
-        error: error.message,
+        error: error?.response?.data
+          ? error.response.data.error
+          : error.message,
       },
     });
   }
