@@ -2,17 +2,14 @@ import {
   SIGN_UP_REQUEST,
   PODIO_SIGN_IN_REQUEST,
   SIGN_IN_REQUEST,
+  FORGOT_PASSWORD_REQUEST,
+  RESET_PASSWORD_REQUEST,
   SIGN_UP,
   PODIO_SIGN_IN,
   SIGN_IN,
-  FORGOT_PASSWORD,
   SIGN_OUT,
-  FORGOT_PASSWORD_REQUEST,
 } from "./types";
-import {
-  HerokuTestesJSON,
-  HerokuTestes,
-} from "../../services/apis/HerokuTestes";
+import { HerokuTestesJSON } from "../../services/apis/HerokuTestes";
 import { history } from "../../router/RootNavigation";
 
 export const signUp = ({ name, email, password }) => async (dispatch) => {
@@ -27,6 +24,7 @@ export const signUp = ({ name, email, password }) => async (dispatch) => {
 
     const { data } = await HerokuTestesJSON.post("/auth/signup", jsonPostData);
     dispatch({ type: SIGN_UP, payload: data });
+    localStorage.setItem("token", data.token);
 
     history.push("/");
     alert("Cadastro realizado com sucesso");
@@ -89,6 +87,7 @@ export const signIn = ({ email, password }) => async (dispatch) => {
       password,
     });
     const { data } = await HerokuTestesJSON.post("/auth/signin", jsonPostData);
+    localStorage.setItem("token", data.token);
     dispatch({ type: SIGN_IN, payload: data });
 
     history.push("/");
@@ -109,7 +108,7 @@ export const signIn = ({ email, password }) => async (dispatch) => {
   }
 };
 
-export const forgotPassword = ({ email, newPassword }) => async (dispatch) => {
+export const forgotPassword = ({ email }) => async (dispatch) => {
   dispatch({
     type: FORGOT_PASSWORD_REQUEST,
     payload: {
@@ -121,13 +120,15 @@ export const forgotPassword = ({ email, newPassword }) => async (dispatch) => {
   try {
     const jsonPostData = JSON.stringify({
       email,
-      newPassword,
     });
+
     const { data } = await HerokuTestesJSON.post(
       "/auth/forgot-password",
       jsonPostData
     );
-    dispatch({ type: FORGOT_PASSWORD, payload: data });
+
+    alert("E-mail enviado!");
+    history.push("/signin");
 
     dispatch({
       type: FORGOT_PASSWORD_REQUEST,
@@ -139,6 +140,58 @@ export const forgotPassword = ({ email, newPassword }) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: FORGOT_PASSWORD_REQUEST,
+      payload: {
+        loading: false,
+        error: error?.response?.data
+          ? error.response.data.error
+          : error.message,
+      },
+    });
+  }
+};
+
+export const resetPassword = ({ newPassword, confirmNewPassword }) => async (
+  dispatch
+) => {
+  dispatch({
+    type: RESET_PASSWORD_REQUEST,
+    payload: {
+      loading: true,
+      error: null,
+    },
+  });
+
+  try {
+    if (newPassword !== confirmNewPassword) {
+      throw new Error("Verifique se as senhas são iguais");
+    }
+
+    const jsonPostData = JSON.stringify({
+      newPassword,
+    });
+
+    const pageUrl = window.location.href;
+    const n = pageUrl.lastIndexOf("/");
+    const token = pageUrl.substring(n + 1);
+
+    const { data } = await HerokuTestesJSON.post(
+      `/auth/reset-password/${token}`,
+      jsonPostData
+    );
+
+    alert("Senha atualizada com sucesso!");
+    history.push("/signin");
+
+    dispatch({
+      type: RESET_PASSWORD_REQUEST,
+      payload: {
+        loading: false,
+        error: null,
+      },
+    });
+  } catch (error) {
+    dispatch({
+      type: RESET_PASSWORD_REQUEST,
       payload: {
         loading: false,
         error: error?.response?.data

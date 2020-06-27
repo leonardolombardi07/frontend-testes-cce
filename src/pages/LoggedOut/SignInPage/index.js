@@ -58,12 +58,12 @@ const SignInPage = ({ podioSignIn, signIn }) => {
         <LogoFluxoContainer>
           <LogoFluxoImage src={logoFluxo} alt="logo fluxo" />
         </LogoFluxoContainer>
-        <PodioButtonContainer onClick={podioSignIn}>
+        {/* <PodioButtonContainer onClick={podioSignIn}>
           <LogoPodioImage src={logoPodio} alt="podio signin" />
           <PodioButtonText>
             {loadingPodioSignIn ? <Spinner /> : "Conecte-se com o Pódio"}
           </PodioButtonText>
-        </PodioButtonContainer>
+        </PodioButtonContainer> */}
 
         <form onSubmit={handleFormSubmit}>
           <InputLabel>E-mail</InputLabel>

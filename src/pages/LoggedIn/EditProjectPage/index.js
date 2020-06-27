@@ -16,7 +16,7 @@ import { Spinner } from "../../../components/Spinner";
 import addImage from "../../../assets/images/add-image-transparent.png";
 import GoBackButton from "../../../components/GoBackButton";
 
-import { editProject } from "../../../redux/actions";
+import { editProject, saveSelectedProject } from "../../../redux/actions";
 import { useSelector, connect } from "react-redux";
 
 const EditProjectPage = ({ editProject }) => {
@@ -27,10 +27,10 @@ const EditProjectPage = ({ editProject }) => {
   } = useSelector((state) => state.requests);
 
   const [formFields, setFormFields] = useState({
-    projectLogo: null,
-    projectName: selectedProject.projectName,
-    projectDescription: selectedProject.projectDescription,
-    projectBugsReport: selectedProject.projectBugsReport,
+    image: null,
+    name: selectedProject.name,
+    description: selectedProject.description,
+    bugsReport: selectedProject.bugsReport,
     _id: selectedProject._id,
   });
   const [imageDisplay, setImageDisplay] = useState(null);
@@ -63,14 +63,13 @@ const EditProjectPage = ({ editProject }) => {
   const handleImageDisplay = () => {
     if (imageDisplay) {
       return imageDisplay;
-    } else if (selectedProject?.projectLogoUrl) {
-      return selectedProject.projectLogoUrl;
+    } else if (selectedProject?.logoUrl) {
+      return selectedProject.logoUrl;
     } else {
       return addImage;
     }
   };
 
-  console.log(imageDisplay);
   return (
     <PageContainer>
       <form>
@@ -78,14 +77,14 @@ const EditProjectPage = ({ editProject }) => {
           <ProjectLogoPlaceholder backgroundImage={handleImageDisplay()}>
             <ProjectLogoInput
               type="file"
-              name="projectLogo"
+              name="image"
               onChange={handleFormChange}
             />
           </ProjectLogoPlaceholder>
 
           <ProjectNameInput
-            name="projectName"
-            value={formFields.projectName}
+            name="name"
+            value={formFields.name}
             onChange={handleFormChange}
           />
         </ProjectHeaderContainer>
@@ -93,8 +92,8 @@ const EditProjectPage = ({ editProject }) => {
         <ProjectCardContainer>
           <Subtitle>Descrição</Subtitle>
           <TextAreaInput
-            name="projectDescription"
-            value={formFields.projectDescription}
+            name="description"
+            value={formFields.description}
             onChange={handleFormChange}
           />
         </ProjectCardContainer>
@@ -102,8 +101,8 @@ const EditProjectPage = ({ editProject }) => {
         <ProjectCardContainer>
           <Subtitle>Bugs</Subtitle>
           <TextAreaInput
-            name="projectBugsReport"
-            value={formFields.projectBugsReport}
+            name="bugsReport"
+            value={formFields.bugsReport}
             onChange={handleFormChange}
           />
         </ProjectCardContainer>

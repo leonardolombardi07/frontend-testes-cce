@@ -24,14 +24,14 @@ const MobileMenu = ({ toggleMobileMenu, saveSelectedProject, signOut }) => {
       <StyledLink
         key={project?._id}
         to={{
-          pathname: `/project-detail/${project?.projectName}`,
+          pathname: `/project-detail/${project?.name}`,
         }}
         onClick={() => {
           toggleMobileMenu();
           saveSelectedProject({ projectData: project });
         }}
       >
-        {project.projectName}
+        {project.name}
       </StyledLink>
     ));
   };

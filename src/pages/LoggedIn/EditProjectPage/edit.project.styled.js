@@ -82,7 +82,7 @@ export const Subtitle = styled.h3`
 
 export const TextAreaInput = styled.textarea.attrs((p) => ({
   spellcheck: false,
-  autoCorrect: false,
+  autoCorrect: "false",
 }))`
   width: calc(100% - 50px);
   min-height: 100px;

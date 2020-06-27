@@ -11,11 +11,11 @@ import { HerokuTestes } from "../../services/apis/HerokuTestes";
 import { history } from "../../router/RootNavigation";
 
 function validateProjectData({ projectData }) {
-  if (!projectData["projectName"] || !projectData["projectDescription"]) {
+  if (!projectData["name"] || !projectData["description"]) {
     throw new Error("Por favor dê um nome e uma descrição pro projeto");
-  } else if (typeof projectData["projectLogo"] === String) {
-    const fileExtension = projectData["projectLogo"].substr(
-      projectData["projectLogo"].length - 3
+  } else if (typeof projectData["image"] === String) {
+    const fileExtension = projectData["image"].substr(
+      projectData["image"].length - 3
     );
     if (fileExtension !== "png") {
       throw new Error("A logo deve estar no formato png");
@@ -30,6 +30,7 @@ export const fetchProjects = () => async (dispatch) => {
   });
   try {
     const { data } = await HerokuTestes.get("/projects");
+
     dispatch({ type: FETCH_PROJECTS, payload: data });
     dispatch({
       type: FETCH_PROJECTS_REQUEST,
@@ -57,16 +58,10 @@ export const createProject = ({ projectData }) => async (dispatch) => {
     validateProjectData({ projectData });
 
     const multipartFormData = new FormData();
-    multipartFormData.append("projectName", projectData.projectName);
-    multipartFormData.append(
-      "projectDescription",
-      projectData.projectDescription
-    );
-    multipartFormData.append(
-      "projectBugsReport",
-      projectData.projectBugsReport
-    );
-    multipartFormData.append("projectLogo", projectData.projectLogo);
+    multipartFormData.append("name", projectData.name);
+    multipartFormData.append("description", projectData.description);
+    multipartFormData.append("bugsReport", projectData.bugsReport);
+    multipartFormData.append("image", projectData.image);
 
     const { data } = await HerokuTestes.post("/projects", multipartFormData);
     dispatch({ type: CREATE_PROJECT, payload: data });
@@ -99,21 +94,16 @@ export const editProject = ({ projectData }) => async (dispatch) => {
     validateProjectData({ projectData });
 
     const multipartFormData = new FormData();
-    multipartFormData.append("projectName", projectData.projectName);
-    multipartFormData.append(
-      "projectDescription",
-      projectData.projectDescription
-    );
-    multipartFormData.append(
-      "projectBugsReport",
-      projectData.projectBugsReport
-    );
-    multipartFormData.append("projectLogo", projectData.projectLogo);
+    multipartFormData.append("name", projectData.name);
+    multipartFormData.append("description", projectData.description);
+    multipartFormData.append("bugsReport", projectData.bugsReport);
+    multipartFormData.append("image", projectData.image);
 
     const { data } = await HerokuTestes.put(
-      `project/${projectData._id}`,
+      `projects/${projectData._id}`,
       multipartFormData
     );
+    console.log(data);
     dispatch({ type: EDIT_PROJECT, payload: data });
 
     dispatch({
@@ -126,7 +116,7 @@ export const editProject = ({ projectData }) => async (dispatch) => {
       type: EDIT_PROJECT_REQUEST,
       payload: {
         loading: false,
-        error: error?.response?.data
+        error: error?.response?.data?.error
           ? error.response.data.error
           : error.message,
       },

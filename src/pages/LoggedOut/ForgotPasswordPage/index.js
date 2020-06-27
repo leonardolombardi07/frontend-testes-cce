@@ -25,7 +25,6 @@ const ForgotPasswordPage = ({ forgotPassword }) => {
 
   const [formFields, setFormFields] = useState({
     email: "",
-    newPassword: "",
   });
 
   const handleInputChange = (event) => {
@@ -39,7 +38,6 @@ const ForgotPasswordPage = ({ forgotPassword }) => {
   const handleSubmit = () => {
     forgotPassword({
       email: formFields.email,
-      newPassword: formFields.newPassword,
     });
   };
 
@@ -51,21 +49,14 @@ const ForgotPasswordPage = ({ forgotPassword }) => {
         </IconContainer>
         <Title>Redefinir minha senha</Title>
         <p>
-          Insira o seu email e sua nova senha. Enviaremos um link para você
-          voltar a acessar a sua conta.
+          Insira seu email. Um e-mail com o link para atualizar sua senha será
+          enviado.
         </p>
 
         <InputLabel>Email</InputLabel>
         <TextInput
           name="email"
           value={formFields.email}
-          onChange={handleInputChange}
-        />
-
-        <InputLabel>Nova senha</InputLabel>
-        <TextInput
-          name="newPassword"
-          value={formFields.newPassword}
           onChange={handleInputChange}
         />
 

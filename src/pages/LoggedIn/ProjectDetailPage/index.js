@@ -27,30 +27,22 @@ const ProjectDetailPage = () => {
     <PageContainer>
       <ProjectHeaderContainer>
         <ProjectLogo
-          src={
-            selectedProject.projectLogoUrl
-              ? selectedProject?.projectLogoUrl
-              : logoFluxo
-          }
+          src={selectedProject.logoUrl ? selectedProject?.logoUrl : logoFluxo}
         />
         <ProjectTitle>
-          {selectedProject?.projectName ? selectedProject.projectName : "..."}
+          {selectedProject?.name ? selectedProject.name : "-"}
         </ProjectTitle>
       </ProjectHeaderContainer>
       <ProjectCardContainer>
         <Subtitle>Descrição</Subtitle>
         <Text>
-          {selectedProject?.projectDescription
-            ? selectedProject.projectDescription
-            : "..."}
+          {selectedProject?.description ? selectedProject.description : "-"}
         </Text>
       </ProjectCardContainer>
       <ProjectCardContainer>
         <Subtitle>Bugs</Subtitle>
         <Text>
-          {selectedProject?.projectBugsReport
-            ? selectedProject.projectBugsReport
-            : "..."}
+          {selectedProject?.bugsReport ? selectedProject.bugsReport : "-"}
         </Text>
       </ProjectCardContainer>
       <GoBackButton />

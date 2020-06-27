@@ -7,6 +7,7 @@ import {
   ProjectPresentationContainer,
   UserDescription,
 } from "./project-card.styled";
+import logoFluxo from "../../assets/images/fluxo-logo.png";
 
 import { connect } from "react-redux";
 import { saveSelectedProject } from "../../redux/actions";
@@ -16,17 +17,20 @@ const ProjectCard = ({ projectData, saveSelectedProject }) => {
     <StyledLink
       key={projectData?.id}
       to={{
-        pathname: `/project-detail/${projectData?.projectName}`,
+        pathname: `/project-detail/${projectData?.name}`,
       }}
       onClick={() => {
         saveSelectedProject({ projectData });
       }}
     >
       <ProjectCardContainer>
-        <ProjectCardLogo src={projectData?.projectLogoUrl} />
+        <ProjectCardLogo
+          src={projectData?.logoUrl ? projectData?.logoUrl : logoFluxo}
+        />
+
         <ProjectPresentationContainer>
-          <h1>{projectData?.projectName}</h1>
-          <UserDescription>User Owner</UserDescription>
+          <h1>{projectData?.name}</h1>
+          {/* <UserDescription>Clique em mim!</UserDescription> */}
         </ProjectPresentationContainer>
       </ProjectCardContainer>
     </StyledLink>

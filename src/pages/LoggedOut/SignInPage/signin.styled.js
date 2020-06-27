@@ -8,7 +8,7 @@ export const SignInModal = styled.div`
   margin: auto;
   padding: 30px;
   background: white;
-  height: 600px;
+  /* height: 600px; */
 
   display: flex;
   flex-direction: column;
@@ -19,7 +19,7 @@ export const SignInModal = styled.div`
     min-width: 400px;
     max-width: 500px;
     padding: 30px;
-    height: 600px;
+    /* height: 800px; */
   }
 `;
 

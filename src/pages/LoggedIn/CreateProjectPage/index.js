@@ -26,10 +26,10 @@ const CreateProjectPage = ({ createProject }) => {
   } = useSelector((state) => state.requests);
 
   const [formFields, setFormFields] = useState({
-    projectLogo: null,
-    projectName: "",
-    projectDescription: "",
-    projectBugsReport: "",
+    image: null,
+    name: "",
+    description: "",
+    bugsReport: "",
   });
   const [imageDisplay, setImageDisplay] = useState(null);
 
@@ -76,14 +76,14 @@ const CreateProjectPage = ({ createProject }) => {
           <ProjectLogoPlaceholder backgroundImage={handleImageDisplay()}>
             <ProjectLogoInput
               type="file"
-              name="projectLogo"
+              name="image"
               onChange={handleFormChange}
             />
           </ProjectLogoPlaceholder>
 
           <ProjectNameInput
-            name="projectName"
-            value={formFields.projectName}
+            name="name"
+            value={formFields.name}
             onChange={handleFormChange}
           />
         </ProjectHeaderContainer>
@@ -91,8 +91,8 @@ const CreateProjectPage = ({ createProject }) => {
         <ProjectCardContainer>
           <Subtitle>Descrição</Subtitle>
           <TextAreaInput
-            name="projectDescription"
-            value={formFields.projectDescription}
+            name="description"
+            value={formFields.description}
             onChange={handleFormChange}
           />
         </ProjectCardContainer>
@@ -100,8 +100,8 @@ const CreateProjectPage = ({ createProject }) => {
         <ProjectCardContainer>
           <Subtitle>Bugs</Subtitle>
           <TextAreaInput
-            name="projectBugsReport"
-            value={formFields.projectBugsReport}
+            name="bugsReport"
+            value={formFields.bugsReport}
             onChange={handleFormChange}
           />
         </ProjectCardContainer>
