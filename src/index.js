@@ -16,6 +16,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("root")
 );
-
-console.log(process.env.REACT_APP_HEROKU_PROJECTS_API_KEY);
-console.log(process.env.NODE_ENV);

@@ -44,6 +44,7 @@ const ResetPasswordPage = ({ resetPassword }) => {
       <SignInModal>
         <InputLabel>Nova Senha</InputLabel>
         <TextInput
+          type="password"
           name="newPassword"
           value={formFields.newPassword}
           onChange={handleInputChange}
@@ -51,6 +52,7 @@ const ResetPasswordPage = ({ resetPassword }) => {
 
         <InputLabel>Confirmar Nova Senha</InputLabel>
         <TextInput
+          type="password"
           name="confirmNewPassword"
           value={formFields.confirmNewPassword}
           onChange={handleInputChange}

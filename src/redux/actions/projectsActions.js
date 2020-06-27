@@ -103,7 +103,6 @@ export const editProject = ({ projectData }) => async (dispatch) => {
       `projects/${projectData._id}`,
       multipartFormData
     );
-    console.log(data);
     dispatch({ type: EDIT_PROJECT, payload: data });
 
     dispatch({
